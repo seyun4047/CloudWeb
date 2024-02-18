@@ -128,7 +128,7 @@ ENV/
 env.bak/
 venv.bak/
 #cloudWeb/.config/
-#cloudWeb/cloud/settings.py
+cloudWeb/cloud/settings.py
 #cloudWeb/cloud/media/
 #cloudWeb/common/migrations/
 #cloudWeb/sharepage/migrations/
