@@ -3,7 +3,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/seyunvenv/bin/uwsgi -i /srv/WhoAmI/.config/uwsgi/whoAmI.ini
+ExecStart=/srv/venv/seyun2024/bin/uwsgi -i /srv/CloudWeb/cloudWeb/.config/uwsgi/cloudWeb.ini
 
 Restart=always
 KillSignal=SIGQUIT
