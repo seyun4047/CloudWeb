@@ -1,0 +1,16 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<title>{% block head_title%}SEYUN's world{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Image Upload</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="images" id="images" accept="image/*" multiple>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+{% endblock %}
