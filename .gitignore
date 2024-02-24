@@ -131,6 +131,7 @@ venv.bak/
 cloudWeb/cloud/settings.py
 #cloudWeb/cloud/media/
 #cloudWeb/common/migrations/
+cloudWeb/lab/migrations/
 #cloudWeb/sharepage/migrations/
 cloudWeb/media/
 # Spyder project settings

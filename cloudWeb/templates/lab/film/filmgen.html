@@ -1,0 +1,9 @@
+{% extends 'common/base.html' %}
+{% block content %}
+{#    <a class="nav-link" href="{% url 'lab:filmgen' %}">Film Generator</a>#}
+{#    <div id="a">#}
+{#                    <img src="{{ .image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
+{#    </div>>#}
+{% include 'lab/film/form.html' %}
+
+{% endblock %}
