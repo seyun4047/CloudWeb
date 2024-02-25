@@ -1,0 +1,8 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<h1>오류!!!</h1>
+    <h3>WHY???</h3>
+    <p>1. 이미지 크기가 모두 같나요?</p>
+    <p>2. 파일형식이 ".jpg", ".jpeg", ".JPG" 가 맞나요?</p>
+    <a class="nav-link" href="{% url 'lab:imgstack' %}">Image Stacker 돌아가기</a>
+{% endblock %}

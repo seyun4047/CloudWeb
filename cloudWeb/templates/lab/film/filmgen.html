@@ -1,9 +1,7 @@
 {% extends 'common/base.html' %}
 {% block content %}
-{#    <a class="nav-link" href="{% url 'lab:filmgen' %}">Film Generator</a>#}
-{#    <div id="a">#}
-{#                    <img src="{{ .image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
-{#    </div>>#}
-{% include 'lab/film/form.html' %}
+    <h1>원하는 사진을 넣어주세요</h1>
+    <p>파일형식은 ".jpg", ".jpeg", ".JPG"만 지원합니다.</p>
 
+{% include 'lab/film/form.html' %}
 {% endblock %}

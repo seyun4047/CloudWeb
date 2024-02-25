@@ -9,6 +9,9 @@ urlpatterns = [
     path('', views.main, name='lab'),
     path('filmgen/', views.filmgen, name='filmgen'),
     path('filmup/', views.upload_film_image, name='upload_film_image'),
+    path('imgstack/', views.imgStack, name='imgstack'),
+    path('stackerup/', views.upload_ImgStacker_image, name='upload_ImgStacker_image'),
+
     # path('logout/', views.logout_view, name='logout'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

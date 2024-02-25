@@ -1,0 +1,8 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<h1>Stacked Image를 경험하세요</h1>
+    <div class="row-cols-1">
+        <img src="{{ stacked_ori_image_url }}" alt="Original Image" style="max-width: 30vw; height: auto;">
+        <img src="{{ stacked_image_url }}" alt="Modified Stacked Image" style="max-width: 30vw; height: auto;">
+</div>
+{% endblock %}
