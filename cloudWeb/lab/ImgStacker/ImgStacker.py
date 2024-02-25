@@ -30,7 +30,7 @@ def imgStack(files):
         # cal each pix's avg
         for i in range(img_len):
             reImg += img[i]
-        reImg = np.array(reImg/3).astype(np.uint8)
+        reImg = np.array(reImg/img_len).astype(np.uint8)
 
         # write overwrite first image and show this one.
         # cv2.imwrite(img_path[0], reImg)
