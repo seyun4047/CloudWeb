@@ -35,7 +35,7 @@ def gen(imgSrc):
 
 
     response = client.chat.completions.create(
-      model="gpt-3.5-turbo-0125",
+      model="gpt-3.5-turbo",
       messages=[
           {"role": "assistant", "content": f"너는 필름사진작가야. {baseInfo} {answerform2}"},
           {"role": "user", "content": f"{img}"},

@@ -9,7 +9,7 @@
 <body>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="file" name="images" id="images" accept="image/*" multiple>
+        <input type="file" name="images" id="images" accept=".jpg, .jpeg" multiple>
         <button type="submit">Upload</button>
     </form>
 </body>

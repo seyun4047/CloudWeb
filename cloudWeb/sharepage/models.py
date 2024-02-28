@@ -18,8 +18,11 @@ class Post(models.Model):
         if self.image:
             # 파일 삭제
             file_path = self.image.path
-            if os.path.exists(file_path):
+            # 썸네일 파일 삭제
+            file_t_path = f"{self.image.path.split('.')[0]}_t.{self.image.path.split('.')[1]}"
+            if os.path.exists(file_path) and os.path.exists(file_t_path):
                 os.remove(file_path)
+                os.remove(file_t_path)
         super().delete(*args, **kwargs)
 
     # def download_image(self, id):
@@ -27,6 +30,9 @@ class Post(models.Model):
     #         # 파일 다운로드
     #         file_path = self.image.path
     #         if os.path.exists(file_path):
+
+    def get_t_url(self):
+        return f"{self.image.url.split('.')[0]}_t.{self.image.url.split('.')[1]}"
 
 class PostDetail(DetailView):
     model = Post
