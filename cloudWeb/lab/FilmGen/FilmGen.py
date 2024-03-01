@@ -7,7 +7,7 @@ from . import ColorGen
 import re
 import json
 import sys
-from django.conf import settings
+
 def string_to_list(input_string):
     s = re.findall(r'[-+]?\d*\.\d+|\d+', input_string)
     return [float(num) for num in s]
@@ -15,8 +15,7 @@ def string_to_list(input_string):
 
 def gen(imgSrc):
 
-    # openai.api_key = os.getenv('OPENAI_API_KEY')
-    openai.api_key = settings.OPENAI_API_KEY
+    openai.api_key = os.getenv('OPENAI_API_KEY')
     client = OpenAI()
 
     # value 범위 설정
