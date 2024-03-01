@@ -7,7 +7,6 @@ from . import ColorGen
 import re
 import json
 import sys
-
 def string_to_list(input_string):
     s = re.findall(r'[-+]?\d*\.\d+|\d+', input_string)
     return [float(num) for num in s]
