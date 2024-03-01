@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from lab.models import Post, ImgStackerPost
-from lab.forms import PostForm
+from .models import Post, ImgStackerPost
+from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
 from .ImgStacker import ImgStacker
 
-from django.conf import settings
 # Create your views here.
 def main(request):
     print("here, lab")
@@ -62,6 +61,4 @@ def upload_ImgStacker_image(request):
             return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url})
     print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
-
-
 

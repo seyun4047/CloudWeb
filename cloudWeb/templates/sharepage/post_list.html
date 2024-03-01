@@ -69,12 +69,12 @@
             text-align: center;
         }
                 #expandedImg {
-            max-width: 50vw;
+            max-width: 85vw;
+            max-height: 85vh;
             display: block;
             margin: auto;
-            margin-top: 10vh;
+            margin-top: 5vh;
             transition: transform 0.5s ease-in-out;
-            /*max-height: 50%;*/
         }
 </style>
 </head>
@@ -92,10 +92,6 @@
             <a class="navbar-brand" href="{% url 'upload_images' %}">UPLOAD</a>
         <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
 {#    <a class="navbar-brand" href="/lab">LAB</a>#}
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <button type="submit" onclick="formAct(0)" class="btn btn-primary">체크항목 지우기</button>
     <button type="submit" onclick="formAct(1)" class="btn btn-primary">체크항목 다운로드</button>
 

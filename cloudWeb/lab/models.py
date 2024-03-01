@@ -3,7 +3,7 @@ import os
 # Create your models here.
 
 # FilmGen
-class Post(models.Model):
+class Post(models.Model): # filmPost
     # title = models.CharField(max_length=255, black=True)
     image = models.FileField(upload_to='lab/film/images', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
