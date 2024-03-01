@@ -133,6 +133,7 @@ cloudWeb/cloud/settings.py
 cloudWeb/lab/migrations/
 #cloudWeb/sharepage/migrations/
 cloudWeb/media/
+cloudWeb/templates/
 # Spyder project settings
 .spyderproject
 .spyproject
