@@ -138,6 +138,7 @@ cloudWeb/templates/
 .spyderproject
 .spyproject
 cloudWeb/.config/
+cloudWeb/lab/ads.py
 # Rope project settings
 .ropeproject
 

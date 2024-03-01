@@ -22,5 +22,5 @@ urlpatterns = [
     path('cloud/', include('sharepage.urls')),
     path('login/', include('common.urls')),
     path('lab/', include('lab.urls')),
-    path('', include('lab.urls'))
+    path('', include('lab.urls')),
 ]

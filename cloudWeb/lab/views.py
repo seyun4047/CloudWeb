@@ -4,7 +4,7 @@ from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
 from .ImgStacker import ImgStacker
-
+from . import ads
 # Create your views here.
 def main(request):
     print("here, lab")
@@ -62,3 +62,8 @@ def upload_ImgStacker_image(request):
     print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
 
+from django.http import HttpResponse
+
+def Ads(request):
+    ads_key = ads.key
+    return HttpResponse(ads_key, content_type='text/plain')

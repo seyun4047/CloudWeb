@@ -11,7 +11,7 @@ urlpatterns = [
     path('filmup/', views.upload_film_image, name='upload_film_image'),
     path('imgstack/', views.imgStack, name='imgstack'),
     path('stackerup/', views.upload_ImgStacker_image, name='upload_ImgStacker_image'),
-
+    path('ads.txt', views.Ads),  # 광고
     # path('logout/', views.logout_view, name='logout'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
