@@ -61,9 +61,3 @@ def upload_ImgStacker_image(request):
             return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url})
     print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
-
-from django.http import HttpResponse
-
-def Ads(request):
-    ads_key = ads.key
-    return HttpResponse(ads_key, content_type='text/plain')
