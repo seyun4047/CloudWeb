@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views.generic import ListView,DetailView, CreateView
 from django.shortcuts import render, redirect, get_object_or_404
 
-from sharepage.models import Post
+from .models import Post
 import requests
+from .models import OurPost
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.conf import settings
@@ -98,4 +99,28 @@ def delete_list(request):
         for pk in selected:
             delete_image(request, pk)
     return redirect('/')
+
+
+
+# ---------------------------- ourlist
+
+def upload_our_images(request):
+    # post = Post.objects.get(pk=post_id)
+    if request.method == 'POST' and request.FILES.getlist('images'):
+        images = request.FILES.getlist('images')
+        for image in images:
+            # 이미지를 저장하거나 원하는 처리를 수행합니다.
+            p=OurPost.objects.create(image=image)
+            # cv2.imread(image)
+            imgResizing.resizeImg(p.image.path)
+        return render(request, 'sharepage/form.html')
+
+    return render(request, 'sharepage/form.html')
+
+
+class OurList(ListView):
+    model = OurPost
+    ordering = '-pk'
+    template_name = 'sharepage/our_list.html'
+    context_object_name = 'our_list'
 

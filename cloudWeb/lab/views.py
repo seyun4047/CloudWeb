@@ -4,7 +4,6 @@ from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
 from .ImgStacker import ImgStacker
-from . import ads
 # Create your views here.
 def main(request):
     print("here, lab")
