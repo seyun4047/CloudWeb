@@ -134,6 +134,8 @@ cloudWeb/lab/migrations/
 #cloudWeb/sharepage/migrations/
 cloudWeb/media/
 cloudWeb/templates/
+cloudWeb/templates/common/base.html
+
 # Spyder project settings
 .spyderproject
 .spyproject
