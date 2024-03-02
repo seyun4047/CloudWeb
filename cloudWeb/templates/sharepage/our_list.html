@@ -1,0 +1,192 @@
+{% extends 'common/base_post_list.html' %}
+{% block content %}
+<title>{% block head_title%}SEYUN's world{% endblock %}</title>
+<style>
+    .img-container {
+        display: flex;
+        flex-wrap: wrap; /* Allow images to wrap to the next line */
+        justify-content: center;
+        align-items: center;
+        gap: 20px; /* Add some gap between images */
+    }
+
+    #a {
+        {#min-width: 10vw;#}
+        width: 13vw;
+        height: 13vh;
+        clip-path: inset(0px 0px 0px 0px round 1vw);
+        overflow: hidden; /* 초과된 부분 잘라내기 */
+        position: relative; /* 이미지 컨테이너 위치 설정 */
+    }
+
+    .img-container img {
+        width: 100%; /* 이미지 비율 유지 */
+        height: 100%; /* 이미지 비율 유지 */
+        object-fit: cover; /* 요소에 맞게 이미지 비율을 조정 */
+        position: absolute; /* 이미지 위치 설정 */
+        top: 50%; /* 이미지를 수직 가운데로 위치 */
+        left: 50%; /* 이미지를 수평 가운데로 위치 */
+        transform: translate(-50%, -50%); /* 이미지 중앙 정렬 */
+    }
+
+    .delBtn,
+    .downBtn,
+    .checkbox1 {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.7); /* 버튼 배경에 투명도를 주어 가시성을 높입니다. */
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+    }
+
+    .delBtn {
+        top: 0;
+        left: 0;
+    }
+
+    .downBtn {
+        bottom: 0;
+        right: 0;
+    }
+
+    .checkbox1 {
+        bottom: 10px;
+        left: 10px;
+    }
+       /*dialog*/
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            text-align: center;
+        }
+                #expandedImg {
+            max-width: 85vw;
+            max-height: 85vh;
+            display: block;
+            margin: auto;
+            margin-top: 5vh;
+            transition: transform 0.5s ease-in-out;
+        }
+</style>
+</head>
+
+<body>
+</ul>
+<form id="form_act" action="{% url 'delete_list' %}" method="post">
+{#<form action="{% url 'delete_list' %}" method="post">#}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid container">
+    <a class="navbar-brand" href="/">MY WORLD</a>
+    <a class="navbar-brand" href="/lab">LAB</a>
+    {% if user.is_authenticated %}
+            <a class="navbar-brand" href="{% url 'upload_our_images' %}">UPLOAD</a>
+        <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
+{#    <a class="navbar-brand" href="/lab">LAB</a>#}
+    <button type="submit" onclick="formAct(0)" class="btn btn-primary">체크항목 지우기</button>
+    <button type="submit" onclick="formAct(1)" class="btn btn-primary">체크항목 다운로드</button>
+
+    {% else %}
+        <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
+    {% endif %}
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="col-md-8 col-lg-9" id="main-area">
+{#    {% block main_area %}#}
+{#    {% endblock %}#}
+
+</div>
+<h1></h1>
+
+<div class="row">
+    <div class="lrMargin"></div>
+    <div class="imgMargin">
+        <div class="img-container">
+
+                    {% csrf_token %}
+            {% for p in our_list %}
+                <div id="a">
+                    <img src="{{ p.get_t_url }}" data-src="{{ p.image.url }}" onclick="openDialog('{{ p.image.url }}')" alt="Photo">
+{#                    <img src="{{ p.get_t_url }}" data-src="{{ p.image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
+{#                    <img src="{{ p.image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
+    {% if user.is_authenticated %}
+
+                    <a class="downBtn" id="downBtn_{{ p.pk }}" href="{% url 'download_image' p.pk %}">O</a>
+                    <a class="delBtn" id="delBtn_{{ p.pk }}" href="{% url 'delete_image' p.pk %}">X</a>
+{#                    <a class="delBtn" id="delBtn_{{ p.pk }}" onclick="delBtn({{ p.pk }})" href="">Delete</a>#}
+{#                    <a class="downBtn" id="downBtn_{{ p.pk }}" onclick="downBtn({{ p.pk }})" href="">Download</a>#}
+                    <input id="check_list_{{ p.pk }}" type="checkbox" class="checkbox1" name="check_list" value="{{ p.pk }}">
+    {% endif %}
+
+                </div>
+            {% endfor %}
+
+{#        <a class="btn btn-primary" href="/delete_list/">del!</a>#}
+
+        </div>
+    </div>
+    <div class="lrMargin"></div>
+</div>
+</form>
+
+<div id="overlay" onClick="closeDialog()">
+    <img id="expandedImg" src="" alt="Photo">
+</div>
+
+<script>
+    function formAct(is_download) {
+        if(is_download==1)
+            document.getElementById('form_act').action="{% url 'download_list' %}";
+        else
+            document.getElementById('form_act').action="{% url 'delete_list' %}";
+
+    }
+    function checkCheckbox(pk) {
+    // 이미지와 연결된 체크박스 요소 가져오기
+        var checkbox = document.getElementById('check_list_' + pk);
+        if (checkbox) {
+            // 체크박스가 존재하는 경우 체크 상태를 변경
+            checkbox.checked = !checkbox.checked;
+        }
+    }
+
+    function openDialog(imageUrl){
+        document.getElementById('expandedImg').src = imageUrl;
+        document.getElementById('overlay').style.display = 'block';
+
+        // 아래로 날라가기
+        {#oriImg = clickedImg#}
+        {#oriImg.classList.add('fly-away');#}
+
+    }
+
+    function closeDialog() {
+        var overlay = document.getElementById('overlay');
+        overlay.style.display = 'none';
+
+        // 날아갔다 다시 올라오게
+        {#oriImg.classList.remove('fly-away');#}
+    }
+</script>
+{#<script>#}
+{#</script>#}
+
+</body>
+</html>
+
+{% endblock %}
