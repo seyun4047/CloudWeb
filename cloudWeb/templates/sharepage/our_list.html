@@ -80,7 +80,7 @@
 </head>
 <body>
 </ul>
-<form id="form_act" action="{% url 'delete_our_list' %}" method="post">
+{#<form id="form_act" action="{% url 'delete_our_list' %}" method="post">#}
 <div class="col-md-8 col-lg-9" id="main-area">
 </div>
 <h1></h1>
@@ -100,7 +100,7 @@
     {% if user.is_authenticated %}
                     <a class="downBtn" id="downBtn_{{ p.pk }}" href="{% url 'download_our_image' p.pk %}">O</a>
                     <a class="delBtn" id="delBtn_{{ p.pk }}" href="{% url 'delete_our_image' p.pk %}">X</a>
-                    <input id="check_list_{{ p.pk }}" type="checkbox" class="checkbox1" name="check_list" value="{{ p.pk }}">
+{#                    <input id="check_list_{{ p.pk }}" type="checkbox" class="checkbox1" name="check_list" value="{{ p.pk }}">#}
     {% endif %}
 
                 </div>

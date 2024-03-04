@@ -124,9 +124,11 @@
     <div class="lrMargin"></div>
     {% if user.is_authenticated %}
     <div class="row-cols-auto">
+    <form id="form_act" action="{% url 'delete_list' %}" method="post">
             <button type="submit" onclick="formAct(0)" class="btn btn-primary">X</button>
             <button type="submit" onclick="formAct(1)" class="btn btn-primary">O</button>
             <a class="btn btn-primary" href="{% url 'upload_images' %}">UPLOAD</a>
+    </form>
     </div>
             <div class="imgMargin">
         <div class="img-container">
