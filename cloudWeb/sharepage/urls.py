@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.conf import settings
-from .views import upload_images, delete_image, download_image, delete_list, download_list, upload_our_images
+from .views import upload_images, delete_image, download_image, delete_list, download_list, upload_our_images, delete_our_image, download_our_image, delete_our_list, download_our_list
 from django.conf.urls.static import static
 urlpatterns = [
     path('',views.PostList.as_view(), name='post_list'),
