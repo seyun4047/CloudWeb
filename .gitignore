@@ -134,7 +134,7 @@ cloudWeb/cloud/settings.py
 #cloudWeb/sharepage/migrations/
 cloudWeb/media/
 #cloudWeb/templates/
-cloudWeb/templates/common/base.html
+cloudWeb/templates/common/ads.html
 
 # Spyder project settings
 .spyderproject
