@@ -121,7 +121,8 @@ def delete_our_image(request, pk):
     # 요청한 포스트를 가져오거나 404 에러를 발생시킵니다.
     post = get_object_or_404(OurPost, pk=pk)
     post.delete()
-    return redirect('/cloud')
+    return redirect('/ourimg')
+
 def download_our_image(request, pk):
     # 해당 모델 객체를 가져옵니다. 예를 들어 Post 모델을 사용하려면 Post 모델에 대한 import를 해야 합니다.
     file_obj = get_object_or_404(OurPost, pk=pk)
@@ -171,7 +172,7 @@ def download_our_list(request):
 
         return response
 
-    return redirect('/')
+    return redirect('/ourimg')
 
 def delete_our_list(request):
     if request.method == 'POST':
