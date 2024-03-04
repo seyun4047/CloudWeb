@@ -5,7 +5,7 @@
     <a class="navbar-brand" href="/lab">LAB</a>
     <a class="navbar-brand" href="{% url 'our_list' %}">OURIMG</a>
     {% if user.is_authenticated %}
-        <a class="navbar-brand" href="/cloud">Cloud</a>s
+        <a class="navbar-brand" href="/cloud">Cloud</a>
         <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
 
     {% else %}
