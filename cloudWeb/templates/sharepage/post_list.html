@@ -80,8 +80,8 @@
 </head>
 
 <body>
-    <button type="submit" onclick="formAct(0)" class="btn btn-primary">체크항목 지우기</button>
-    <button type="submit" onclick="formAct(1)" class="btn btn-primary">체크항목 다운로드</button>
+
+
 {#------------------------------------------------------#}
 {#</ul>#}
 {#<form id="form_act" action="{% url 'delete_list' %}" method="post">#}
@@ -111,9 +111,8 @@
 {#  </div>#}
 {#</nav>#}
 {#--------------------------------------------------#}
-{% if user.is_authenticated %}#}
-            <a class="navbar-brand" href="{% url 'upload_images' %}">UPLOAD</a>
-{% endif %}
+
+
     <div class="col-md-8 col-lg-9" id="main-area">
 {#    {% block main_area %}#}
 {#    {% endblock %}#}
@@ -124,9 +123,11 @@
 <div class="row">
     <div class="lrMargin"></div>
     {% if user.is_authenticated %}
+         <button type="submit" onclick="formAct(0)" class="btn btn-primary">체크항목 지우기</button>
+    <button type="submit" onclick="formAct(1)" class="btn btn-primary">체크항목 다운로드</button>
+           <a class="btn btn-primary" href="{% url 'upload_images' %}">UPLOAD</a>
     <div class="imgMargin">
-        <div class="img-container">
-
+        <div class="img-container">z
                     {% csrf_token %}
             {% for p in post_list %}
                 <div id="a">
