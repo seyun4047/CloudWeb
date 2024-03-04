@@ -1,30 +1,62 @@
 {% extends 'common/base.html' %}
 {% block content %}
- <style>
-    /* 네비게이션 바 스타일 */
+<style>
     .nav-link1 {
-        font-family: Arial, sans-serif;
-        font-size: 18px;
+        display: inline-block;
+        padding: 30px 40px; /* 버튼의 패딩을 조정하여 크기를 변경합니다 */
+        color: #fff;
         text-decoration: none;
-        color: #333; /* 링크 색상 */
-        padding: 10px 20px; /* 여백 */
-        border-radius: 5px; /* 라운드 모서리 */
-        margin: 0 10px; /* 링크 간격 */
-        background-color: #f0f0f0; /* 배경색 */
-        transition: background-color 0.3s ease; /* 배경색 전환 효과 */
-         display: flex;
-        justify-content: center;
-        margin-top: 20px;
+        background-size: cover;
+        background-position: center;
     }
 
-    /* 호버 효과 */
-    .nav-link1:hover {
-        background-color: #ddd; /* 호버 배경색 */
+    .filmgen-btn {
+        background-image: url('/static/lab/filmbtn.jpg');
+    }
+
+    .imgstack-btn {
+        background-image: url('link_to_image_stacker_image.jpg');
+    }
+
+    .hover-image {
+        display: none;
+        position: fixed;
+        max-width: 37vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
     }
 </style>
 
-<!-- 네비게이션 바 -->
-<a class="nav-link1" href="{% url 'lab:filmgen' %}">Film Generator</a>
-<a class="nav-link1" href="{% url 'lab:imgstack' %}">Image Stacker</a>
-{#    <a class="nav-link" href="{% url 'common:login' %}">로그인</a>#}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const filmgenBtn = document.querySelector('.filmgen-btn');
+        const imgstackBtn = document.querySelector('.imgstack-btn');
+        const hoverImage = document.createElement('img');
+        hoverImage.classList.add('hover-image');
+        document.body.appendChild(hoverImage);
+
+        filmgenBtn.addEventListener("mouseover", function() {
+            hoverImage.src = '/static/lab/film.gif';
+            hoverImage.style.display = 'block';
+        });
+
+        // imgstackBtn.addEventListener("mouseover", function() {
+        //     hoverImage.src = 'link_to_large_image_stacker_image.jpg';
+        //     hoverImage.style.display = 'block';
+        // });
+
+        filmgenBtn.addEventListener("mouseout", function() {
+            hoverImage.style.display = 'none';
+        });
+
+        imgstackBtn.addEventListener("mouseout", function() {
+            hoverImage.style.display = 'none';
+        });
+    });
+</script>
+
+<a class="nav-link1 filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator</a>
+<a class="nav-link1 imgstack-btn" href="{% url 'lab:imgstack' %}">Image Stacker</a>
 {% endblock %}
