@@ -188,3 +188,4 @@ class OurList(ListView):
     template_name = 'sharepage/our_list.html'
     context_object_name = 'our_list'
 
+
