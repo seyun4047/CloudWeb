@@ -179,7 +179,7 @@ def delete_our_list(request):
         print("deletelist!!!!!!!!!!!!!!!!!!!!!!!!!!!!", selected)
         for pk in selected:
             delete_image(request, pk)
-    return redirect('/')
+    return redirect('/ourimg')
 
 class OurList(ListView):
     model = OurPost
