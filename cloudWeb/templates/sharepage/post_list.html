@@ -123,10 +123,12 @@
 <div class="row">
     <div class="lrMargin"></div>
     {% if user.is_authenticated %}
-         <button type="submit" onclick="formAct(0)" class="btn">체크항목 지우기</button>
-    <button type="submit" onclick="formAct(1)" class="btn">체크항목 다운로드</button>
-           <a class="btn" href="{% url 'upload_images' %}">UPLOAD</a>
-    <div class="imgMargin">
+    <div class="row-cols-auto">
+            <button type="submit" onclick="formAct(0)" class="btn btn-primary">X</button>
+            <button type="submit" onclick="formAct(1)" class="btn btn-primary">O</button>
+            <a class="btn btn-primary" href="{% url 'upload_images' %}">UPLOAD</a>
+    </div>
+            <div class="imgMargin">
         <div class="img-container">z
                     {% csrf_token %}
             {% for p in post_list %}
