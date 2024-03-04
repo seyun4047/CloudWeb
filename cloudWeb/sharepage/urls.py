@@ -13,6 +13,10 @@ urlpatterns = [
     path('ourimg/', views.OurList.as_view(), name='our_list'),
     #     upload_our_images
     path('uploadourimg/', upload_our_images, name='upload_our_images'),
+    path('delete_our_list/', delete_our_list, name='delete_our_list'),
+    path('download_our_list/', download_our_list, name='download_our_list'),
+    path('download_our_image/<int:pk>', download_our_image, name='download_our_image'),
+    path('delete_our_image/<int:pk>', delete_our_image, name='delete_our_image'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
