@@ -1,4 +1,16 @@
 <style>
+    /* 일반 크기 */
+    .navbar-brand {
+        font-size: 16px; /* 일반 폰트 크기 */
+    }
+
+    /* 모바일에서만 적용되는 스타일 */
+    @media (max-width: 767px) {
+        .navbar-brand {
+            font-size: 15px; /* 모바일에서 작은 폰트 크기 */
+        }
+    }
+
     .navbar-brand:hover {
         background-color: #ddd; /* 호버 배경색 */
     }

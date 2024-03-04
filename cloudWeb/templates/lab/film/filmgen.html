@@ -1,7 +1,21 @@
 {% extends 'common/base.html' %}
-{% block content %}
-    <h1>원하는 사진을 넣어주세요</h1>
-    <p>파일형식은 ".jpg", ".jpeg", ".JPG"만 지원합니다.</p>
 
-{% include 'lab/film/form.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 col-lg-8">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white text-center">
+                    <h1>UPLOAD PHOTO</h1>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">파일 형식은 ".jpg", ".jpeg", ".JPG"만 지원합니다.</p>
+                    <div class="text-center">
+                        {% include 'lab/film/form.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

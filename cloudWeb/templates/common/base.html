@@ -3,10 +3,22 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'common/bootstrap/bootstrap.min.css' %}" media="screen">
-    {#    광고   #}
+    {# 광고 #}
     {% include 'common/ads.html' %}
     <style>
+        /* 일반 글꼴 크기 */
+    body {
+        font-size: 16px; /* 일반 글꼴 크기 */
+    }
+
+    /* 모바일에서만 적용되는 스타일 */
+    @media (max-width: 767px) {
+        body {
+            font-size: 14px; /* 모바일에서 작은 글꼴 크기 */
+        }
+    }
         body {
             background-color: aliceblue;
         }
@@ -16,7 +28,7 @@
             align-items: center;
             flex-direction: column; /* 요소를 세로로 배치 */
         }
-         footer {
+        footer {
             position: relative;
             display: flex;
             justify-content: center;
@@ -26,25 +38,28 @@
             width: 100%;
         }
 
-
-
-
-
+        /* 모바일 화면에서 navbar 확대 */
+        @media (max-width: 767px) {
+            .navbar-expand-lg .navbar-nav {
+                flex-direction: column;
+            }
+            .navbar-expand-lg .navbar-nav .nav-link {
+                padding: .5rem 1rem;
+            }
+        }
     </style>
 </head>
 <body class="container-fluid">
-    <ul class="navbar-nav">
-    <title>{% block head_title%}
-        {% endblock %}</title>
-    </ul>
+<title>{% block head_title%}
+{% endblock %}</title>
 {% include 'common/navbar.html' %}
-    <h1></h1>
-    <div id="main_content">
-{% block content %}
-{% endblock %}
-{% include 'common/footer.html' %}
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+<h1></h1>
+<div id="main_content">
+    {% block content %}
+    {% endblock %}
+    {% include 'common/footer.html' %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>
 </html>
