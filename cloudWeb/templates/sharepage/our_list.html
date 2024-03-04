@@ -107,12 +107,9 @@
 {#</nav>#}
 {#-------------------------------------#}
 <div class="col-md-8 col-lg-9" id="main-area">
-{#    {% block main_area %}#}
-{#    {% endblock %}#}
-
 </div>
 <h1></h1>
-{% if user.is_authenticated %}#}
+{% if user.is_authenticated %}
             <a class="btn btn-primary" href="{% url 'upload_our_images' %}">UPLOAD</a>
 {% endif %}
     <div class="row">
@@ -124,22 +121,14 @@
             {% for p in our_list %}
                 <div id="a">
                     <img src="{{ p.get_t_url }}" data-src="{{ p.image.url }}" onclick="openDialog('{{ p.image.url }}')" alt="Photo">
-{#                    <img src="{{ p.get_t_url }}" data-src="{{ p.image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
-{#                    <img src="{{ p.image.url }}" onclick="checkCheckbox({{ p.pk }})" alt="Photo">#}
     {% if user.is_authenticated %}
-
                     <a class="downBtn" id="downBtn_{{ p.pk }}" href="{% url 'download_our_image' p.pk %}">O</a>
                     <a class="delBtn" id="delBtn_{{ p.pk }}" href="{% url 'delete_our_image' p.pk %}">X</a>
-{#                    <a class="delBtn" id="delBtn_{{ p.pk }}" onclick="delBtn({{ p.pk }})" href="">Delete</a>#}
-{#                    <a class="downBtn" id="downBtn_{{ p.pk }}" onclick="downBtn({{ p.pk }})" href="">Download</a>#}
                     <input id="check_list_{{ p.pk }}" type="checkbox" class="checkbox1" name="check_list" value="{{ p.pk }}">
     {% endif %}
 
                 </div>
             {% endfor %}
-
-{#        <a class="btn btn-primary" href="/delete_list/">del!</a>#}
-
         </div>
     </div>
     <div class="lrMargin"></div>
@@ -166,28 +155,15 @@
             checkbox.checked = !checkbox.checked;
         }
     }
-
     function openDialog(imageUrl){
         document.getElementById('expandedImg').src = imageUrl;
         document.getElementById('overlay').style.display = 'block';
-
-        // 아래로 날라가기
-        {#oriImg = clickedImg#}
-        {#oriImg.classList.add('fly-away');#}
-
     }
-
     function closeDialog() {
         var overlay = document.getElementById('overlay');
         overlay.style.display = 'none';
-
-        // 날아갔다 다시 올라오게
-        {#oriImg.classList.remove('fly-away');#}
     }
 </script>
-{#<script>#}
-{#</script>#}
-
 </body>
 </html>
 
