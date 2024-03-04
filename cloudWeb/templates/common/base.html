@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 {% load static %}
-
 <html lang="ko">
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-{#    광고   #}
-        {% include 'common/ads.html' %}
+    <link rel="stylesheet" href="{% static 'common/bootstrap/bootstrap.min.css' %}" media="screen">
+    {#    광고   #}
+    {% include 'common/ads.html' %}
     <style>
         #main_content{
-              display: flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column; /* 요소를 세로로 배치 */
-
         }
         footer {
             position: relative;
             display: flex;
             justify-content: center;
         }
-
     </style>
-
+</head>
 <body class="container-fluid">
-<ul class="navbar-nav">
-<title>{% block head_title%}
-    {% endblock %}</title>
-
-
-</ul>
+    <ul class="navbar-nav">
+    <title>{% block head_title%}
+        {% endblock %}</title>
+    </ul>
 {% include 'common/navbar.html' %}
-<h1></h1>
-<div id="main_content">
+    <h1></h1>
+    <div id="main_content">
 {% block content %}
 {% endblock %}
-</div>
-
 {% include 'common/footer.html' %}
-
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
 </html>
