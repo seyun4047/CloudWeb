@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('cloud/', include('sharepage.urls')),
+    path('ourimg/', include('sharepage.urls')),
     path('login/', include('common.urls')),
     path('lab/', include('lab.urls')),
     path('', include('lab.urls')),
