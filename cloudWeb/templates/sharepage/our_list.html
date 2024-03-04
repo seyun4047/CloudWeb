@@ -1,4 +1,4 @@
-{% extends 'common/base_post_list.html' %}
+{% extends 'common/base.html' %}
 {% block content %}
 <title>{% block head_title%}SEYUN's world{% endblock %}</title>
 <style>
@@ -78,7 +78,6 @@
         }
 </style>
 </head>
-
 <body>
 </ul>
 <form id="form_act" action="{% url 'delete_our_list' %}" method="post">
@@ -113,8 +112,10 @@
 
 </div>
 <h1></h1>
-
-<div class="row">
+{% if user.is_authenticated %}#}
+            <a class="navbar-brand" href="{% url 'upload_our_images' %}">UPLOAD</a>
+{% endif %}
+    <div class="row">
     <div class="lrMargin"></div>
     <div class="imgMargin">
         <div class="img-container">

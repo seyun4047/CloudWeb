@@ -13,11 +13,54 @@
             align-items: center;
             flex-direction: column; /* 요소를 세로로 배치 */
         }
-        footer {
+         footer {
             position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+            bottom: 0;
+            height: 1%;
+            width: 100%;
         }
+        .lrMargin {
+            width:10%;
+        }
+        .imgMargin {
+            width:80%;
+        }
+
+        .img-container {
+          justify-content: center;
+
+        }
+
+        #expandedTitle {
+            position: absolute;
+            /*top: 50%; !* 수직 가운데 정렬 *!*/
+            left: 50%; /* 수평 가운데 정렬 */
+            margin-top: 2vh;
+            transform: translate(-50%, -50%); /* 가운데 정렬 조정 */
+            color: black;
+        }
+        #expandedAuth {
+            position: absolute;
+            /*top: 50%; !* 수직 가운데 정렬 *!*/
+            left: 50%; /* 수평 가운데 정렬 */
+            margin-top: 4vh;
+            transform: translate(-50%, -50%); /* 가운데 정렬 조정 */
+            color: black;
+        }
+        #expandedContent {
+            position: absolute;
+            /*top: 50%; !* 수직 가운데 정렬 *!*/
+            left: 50%; /* 수평 가운데 정렬 */
+            margin-top: 6vh;
+            transform: translate(-50%, -50%); /* 가운데 정렬 조정 */
+            color: black;
+        }
+
+
+
     </style>
 </head>
 <body class="container-fluid">
