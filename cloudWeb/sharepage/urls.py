@@ -4,8 +4,8 @@ from django.conf import settings
 from .views import upload_images, delete_image, download_image, delete_list, download_list, upload_our_images, delete_our_image, download_our_image, delete_our_list, download_our_list
 from django.conf.urls.static import static
 urlpatterns = [
-    path('cloud',views.PostList.as_view(), name='post_list'),
-    path('upload/',upload_images, name='upload_images'),
+    path('cloud/',views.PostList.as_view(), name='post_list'),
+    path('cloud/upload/',upload_images, name='upload_images'),
     path('delete_list/', delete_list, name='delete_list'),
     path('download_list/', download_list, name='download_list'),
     path('download_image/<int:pk>', download_image, name='download_image'),

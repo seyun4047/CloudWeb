@@ -11,12 +11,12 @@
     }
 
     #a {
-        {#min-width: 10vw;#}
-        width: 23vw;
-        height: 23vh;
-        clip-path: inset(0px 0px 0px 0px round 1vw);
+        width: 32vh;
         overflow: hidden; /* 초과된 부분 잘라내기 */
         position: relative; /* 이미지 컨테이너 위치 설정 */
+        aspect-ratio: 9 / 16; /* 가로:세로 비율 설정 */
+
+
     }
 
     .img-container img {
@@ -85,24 +85,25 @@
 </div>
 <h1></h1>
 {% if user.is_authenticated %}
-            <a class="btn btn-dark" href="{% url 'upload_our_images' %}">UPLOAD</a>
-{#{% include 'sharepage/form.html' %}#}
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_our_images' %}">
+        {% csrf_token %}
+         <input type="file" name="images" id="images" accept=".jpg, .jpeg" multiple>
+        <button type="submit">Upload</button>
+    </form>
+    <h1></h1>
 {% endif %}
     <div class="row">
     <div class="lrMargin"></div>
     <div class="imgMargin">
         <div class="img-container">
-
-                    {% csrf_token %}
+            {% csrf_token %}
             {% for p in our_list %}
                 <div id="a">
-                    <img src="{{ p.get_t_url }}" data-src="{{ p.image.url }}" onclick="openDialog('{{ p.image.url }}')" alt="Photo">
-    {% if user.is_authenticated %}
+                    <img src="{{ p.image.url }}" onclick="openDialog('{{ p.image.url }}')" alt="Photo">
+            {% if user.is_authenticated %}
                     <a class="downBtn" id="downBtn_{{ p.pk }}" href="{% url 'download_our_image' p.pk %}">O</a>
                     <a class="delBtn" id="delBtn_{{ p.pk }}" href="{% url 'delete_our_image' p.pk %}">X</a>
-{#                    <input id="check_list_{{ p.pk }}" type="checkbox" class="checkbox1" name="check_list" value="{{ p.pk }}">#}
-    {% endif %}
-
+            {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -110,18 +111,15 @@
     <div class="lrMargin"></div>
 </div>
 </form>
-
 <div id="overlay" onClick="closeDialog()">
     <img id="expandedImg" src="" alt="Photo">
 </div>
-
 <script>
     function formAct(is_download) {
         if(is_download==1)
             document.getElementById('form_act').action="{% url 'download_our_list' %}";
         else
             document.getElementById('form_act').action="{% url 'delete_our_list' %}";
-
     }
     function checkCheckbox(pk) {
     // 이미지와 연결된 체크박스 요소 가져오기

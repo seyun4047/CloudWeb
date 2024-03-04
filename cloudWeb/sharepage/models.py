@@ -58,10 +58,11 @@ class OurPost(models.Model):
             # 파일 삭제
             file_path = self.image.path
             # 썸네일 파일 삭제
-            file_t_path = f"{self.image.path.split('.')[0]}_t.{self.image.path.split('.')[1]}"
-            if os.path.exists(file_path) and os.path.exists(file_t_path):
+            # file_t_path = f"{self.image.path.split('.')[0]}_t.{self.image.path.split('.')[1]}"
+            # if os.path.exists(file_path) and os.path.exists(file_t_path):
+            if os.path.exists(file_path):
                 os.remove(file_path)
-                os.remove(file_t_path)
+                # os.remove(file_t_path)
         super().delete(*args, **kwargs)
 
     # def download_image(self, id):

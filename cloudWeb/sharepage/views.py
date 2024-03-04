@@ -23,6 +23,19 @@ class PostList(ListView):
 
 # ori_url_split =  film_ori_image_url.split('.')
 #         film_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
+# def upload_images(request):
+#     # post = Post.objects.get(pk=post_id)
+#     if request.method == 'POST' and request.FILES.getlist('images'):
+#         images = request.FILES.getlist('images')
+#         for image in images:
+#             # 이미지를 저장하거나 원하는 처리를 수행합니다.
+#             p=Post.objects.create(image=image)
+#             # cv2.imread(image)
+#             imgResizing.resizeImg(p.image.path)
+#         return render(request, 'sharepage/form.html')
+#
+#     return render(request, 'sharepage/form.html')
+
 def upload_images(request):
     # post = Post.objects.get(pk=post_id)
     if request.method == 'POST' and request.FILES.getlist('images'):
@@ -32,9 +45,9 @@ def upload_images(request):
             p=Post.objects.create(image=image)
             # cv2.imread(image)
             imgResizing.resizeImg(p.image.path)
-        return render(request, 'sharepage/form.html')
+        return redirect('/ourimg/cloud')
 
-    return render(request, 'sharepage/form.html')
+    return redirect('/ourimg/cloud')
 
 def delete_image(request, pk):
     # 요청한 포스트를 가져오거나 404 에러를 발생시킵니다.
@@ -112,10 +125,10 @@ def upload_our_images(request):
             # 이미지를 저장하거나 원하는 처리를 수행합니다.
             p=OurPost.objects.create(image=image)
             # cv2.imread(image)
-            imgResizing.resizeImg(p.image.path)
-        return render(request, 'sharepage/form.html')
+            imgResizing.resizeOURImg(p.image.path)
+        return redirect('/ourimg')
 
-    return render(request, 'sharepage/form.html')
+    return redirect('/ourimg')
 
 def delete_our_image(request, pk):
     # 요청한 포스트를 가져오거나 404 에러를 발생시킵니다.
