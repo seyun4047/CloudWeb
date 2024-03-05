@@ -25,7 +25,10 @@ def upload_film_image(request):
         p = Post.objects.create(image=image)
         print("img saved: ",p.image.path)
         #filmgen
-        FilmGen.gen(p.image.path)
+        try:
+            FilmGen.gen(p.image.path)
+        except Exception:
+            return render(request, 'lab/film/filmError.html')
         # FilmGen.gen(p.get_img_src())
         film_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split =  film_ori_image_url.split('.')
