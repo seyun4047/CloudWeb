@@ -24,7 +24,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('ourimg/', include('sharepage.urls')),
     path('login/', include('common.urls')),
     path('lab/', include('lab.urls')),

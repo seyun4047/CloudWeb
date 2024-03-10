@@ -51,7 +51,3 @@ class ImgStackerPost(models.Model):
             if os.path.exists(file_path):
                 os.remove(file_path)
         super().delete(*args, **kwargs)
-
-    class Meta:
-        # 데이터베이스와 연동되지 않도록 설정
-        managed = False

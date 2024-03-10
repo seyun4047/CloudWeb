@@ -23,7 +23,7 @@ def upload_film_image(request):
     if request.method == 'POST' and request.FILES.get('film_image'):
         image = request.FILES.get('film_image')
         p = Post.objects.create(image=image)
-        print("img saved: ",p.image.path)
+        print("img saved: ", p.image.path)
         #filmgen
         try:
             FilmGen.gen(p.image.path)
