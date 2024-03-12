@@ -1,0 +1,134 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <style>
+    #mainImg{
+        max-width: 100dvw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    #welcomeText{
+        font-weight: bold;
+        font-size: 5vw;
+        color: white;
+        position: absolute;
+        top: 28vh;
+        z-index: 1;
+    }
+    #sec1-txt{
+        margin-top: 5vh;
+        font-style: italic;
+        background-color: black;
+        position: relative;
+        font-weight: bold;
+        font-size: 3vw;
+        color: white;
+    }
+
+    .section1{
+        background-color: black;
+        position: absolute;
+        width: 100%;
+        height: 1000px;
+        top: 60dvw;
+        display: flex; /* Flexbox 레이아웃 설정 */
+        align-items: center; /* 가로 가운데 정렬 */
+        flex-direction: column;
+    }
+
+    .filmgen-btn {
+        position: relative;
+        margin-top: 2vh;
+        padding: 100px 150px; /* 버튼의 패딩을 조정하여 크기를 변경합니다 */
+        color: #fff;
+        {#margin-top: 15vw;#}
+        z-index: 1;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+        background-image: url('/static/lab/filmbtn.jpg');
+    }
+
+    .filmgen-btn:hover {
+        background-image: url('/static/lab/film.gif');
+    }
+
+    .sec1-inttxt{
+        {#margin-top: 20vh;#}
+        margin-top: 5vh;
+        font-style: italic;
+        background-color: black;
+        position: relative;
+        font-weight: bold;
+        font-size: 2vw;
+        color: white;
+    }
+
+    .smBtn {
+        margin-top: 3vh;
+    }
+    </style>
+    <>
+    <img id='mainImg' src='/static/main/mainImg.jpg'>
+    <div id="welcomeText">Welcome to MUTZIN STUDIO!</div>
+    <div class="section1">
+        <div id="sec1-txt">Try a variety of photo conversion modules!</div>
+        <div class="sec1-inttxt">Create new Image to Filmtic Photo</div>
+        <a class="filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator</a>
+        <a class="btn btn-outline-light smBtn" href="/lab">SHOW MORE</a>
+    </div>
+
+    </body>
+    <script>
+    // 글자를 한 글자씩 나타내는 함수
+        // 글자를 한 글자씩 나타내고 지우는 함수
+        function revealAndEraseText(element, delay) {
+            var text = element.innerHTML;
+            element.innerHTML = '';
+            var length = text.length;
+            var i = 0;
+            let onText = ''
+            let delText = ''
+            var t=100;
+            // 글자를 나타내는 함수
+            function reveal() {
+                if (i <= length) {
+                    onText += text.charAt(i)
+                    element.innerHTML = onText + '|';
+                    i++;
+                    setTimeout(reveal, delay);
+                } else {
+                    // 모든 글자가 나타난 후, 글자를 지우는 함수 호출
+                    {#setTimeout(waitText, delay); // 모든 글자가 나타난 후 1초 대기#}
+                    setTimeout(erase, 500); // 모든 글자가 나타난 후 1초 대기
+
+                }
+            }
+
+            // 글자를 지우는 함수
+            function erase() {
+                if (i >= 0) {
+                    var newText = text.substring(0, i);
+                    element.innerHTML = newText + '|';
+                    i-=2;
+                    setTimeout(erase, delay);
+                } else {
+                    // 모든 글자가 지워진 후, 다시 글자를 나타내는 함수 호출
+                    onText = ''
+                    setTimeout(reveal, 1000);
+                     // 모든 글자가 지워진 후 1초 대기
+                }
+            }
+
+            // 초기에 글자 나타내는 함수 호출
+            reveal();
+        }
+        // 함수 호출하여 글자를 나타내고 지우는 효과 적용
+        window.onload = function () {
+            var delay = 100; // 각 글자가 나타나거나 지워지는 시간 간격 (밀리초)
+            var textElement = document.getElementById('welcomeText');
+            revealAndEraseText(textElement, delay);
+        };
+</script>
+{% endblock %}

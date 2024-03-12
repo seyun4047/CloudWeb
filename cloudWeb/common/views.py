@@ -5,13 +5,16 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from common.forms import UserForm
+from .forms import UserForm
 def logout_view(request):
     logout(request)
     return redirect('/')
 
+def mainpage(request):
+    return render(request, 'common/main.html')
 
-
+def contactpage(request):
+    return render(request, 'common/contactpage.html')
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)

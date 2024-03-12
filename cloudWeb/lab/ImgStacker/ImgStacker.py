@@ -10,7 +10,7 @@ def imgStack(files):
         img_path = [files[i].image.path for i in range(img_len)]
         print("this imgstacker img_path",img_path)
 
-    # img_path = [f"src/img2/img{i}.JPG" for i in range(1,6,1)]
+    # img_path = [f"svg/img2/img{i}.JPG" for i in range(1,6,1)]
 
     # just resize Image
     # for i in range(5):

@@ -20,7 +20,7 @@
         }
     }
         body {
-            background-color: aliceblue;
+            background-color: black;
         }
         #main_content{
             display: flex;
@@ -29,13 +29,15 @@
             flex-direction: column; /* 요소를 세로로 배치 */
         }
         footer {
-            position: relative;
+            position: fixed;
+            bottom: 3vh;
             display: flex;
             justify-content: center;
             align-items: center;
             bottom: 0;
             height: 1%;
             width: 100%;
+            z-index: -1;
         }
 
         /* 모바일 화면에서 navbar 확대 */
@@ -49,11 +51,10 @@
         }
     </style>
 </head>
-<body class="container-fluid">
+<body>
 <title>{% block head_title%}
 {% endblock %}</title>
 {% include 'common/navbar.html' %}
-<h1></h1>
 <div id="main_content">
     {% block content %}
     {% endblock %}

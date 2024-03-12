@@ -26,6 +26,7 @@ class ColorOp:
     def getFilmImg(self, e, c, t, g, gc):
         # print(self.oriImg)
         self.img = self.oriImg.copy()
+        self.downSizeImg(self.img, self.img_path)
         # cv2.imwrite("isori.jpeg", self.img)
         self.setExposure(e)
         self.setContrast(c)
