@@ -37,6 +37,8 @@
         flex-direction: column;
     }
 
+
+
     .filmgen-btn {
         position: relative;
         margin-top: 2vh;
@@ -53,7 +55,12 @@
     .filmgen-btn:hover {
         background-image: url('/static/lab/film.gif');
     }
-
+    
+     @media (max-width: 767px) {
+            .filmgen-btn .navbar-nav {
+                padding: 30px 60px;
+            }
+        }
     .sec1-inttxt{
         {#margin-top: 20vh;#}
         margin-top: 5vh;
