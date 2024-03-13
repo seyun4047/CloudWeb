@@ -13,8 +13,22 @@
         font-size: 5vw;
         color: white;
         position: absolute;
-        top: 28vh;
+        top: 25vh;
         z-index: 1;
+    }
+    #cvImg{
+        position: relative;
+        margin-top: 2vh;
+        padding: 100px 150px;
+        color: #fff;
+        z-index: 1;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+        background-image: url('/static/main/cv.jpeg');
+    }
+    #cvImg:hover{
+        background-image: url('/static/main/cv.gif');
     }
     #sec1-txt{
         margin-top: 5vh;
@@ -25,26 +39,43 @@
         font-size: 3vw;
         color: white;
     }
-
+    .shortcutBtns{
+        width:100dvw;
+        height:10dvh;
+        {#background-color: gray;#}
+        position: absolute;
+        top: 41vh;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .section1{
         background-color: black;
         position: absolute;
         width: 100%;
         height: 1000px;
         top: 60dvw;
-        display: flex; /* Flexbox 레이아웃 설정 */
-        align-items: center; /* 가로 가운데 정렬 */
+        display: flex;
+        align-items: center;
         flex-direction: column;
     }
-
-
+    .section2{
+        background-color: black;
+        position: absolute;
+        width: 100%;
+        height: 1000px;
+        top: 130dvw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 
     .filmgen-btn {
         position: relative;
         margin-top: 2vh;
-        padding: 100px 150px; /* 버튼의 패딩을 조정하여 크기를 변경합니다 */
+        padding: 100px 150px;
         color: #fff;
-        {#margin-top: 15vw;#}
         z-index: 1;
         text-decoration: none;
         background-size: cover;
@@ -69,7 +100,6 @@
      }
 
     .sec1-inttxt{
-        {#margin-top: 20vh;#}
         margin-top: 5vh;
         font-style: italic;
         background-color: black;
@@ -78,25 +108,48 @@
         font-size: 2vw;
         color: white;
     }
-
     .smBtn {
         margin-top: 10vh;
+    }
+    .scBtn {
+        font-weight: bold;
+        font-size: 1vw;
+        color: white;
+        display: none;
+        margin-right: 3vw;
+        margin-left: 3vw;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        line-height: 85px;
+    }
+    .shortcutBtns:hover .scBtn {
+        display: block;
+
     }
     </style>
     <>
     <img id='mainImg' src='/static/main/mainImg.jpg'>
     <div id="welcomeText">Welcome to MUTZIN STUDIO!</div>
+    <div class="shortcutBtns">
+        <a class="btn btn-outline-light scBtn" href="{% url 'lab:lab' %}">CV</a>
+        <a class="btn btn-outline-light scBtn" href="{% url 'gallery' %}">GALLERY</a>
+        <a class="btn btn-outline-light scBtn" href="{% url 'lab:lab' %}">LAB</a>
+    </div>
     <div class="section1">
         <div id="sec1-txt">Try a variety of photo conversion modules!</div>
         <div class="sec1-inttxt">Create new Image to Filmtic Photo</div>
         <a class="filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator</a>
         <a class="btn btn-outline-light smBtn" href="/lab">SHOW MORE</a>
     </div>
+<br>
+    <div class="section2">
+        <div id="sec1-txt">I am</div>
+        <a id="cvImg"></a>
+    </div>
 
     </body>
     <script>
-    // 글자를 한 글자씩 나타내는 함수
-        // 글자를 한 글자씩 나타내고 지우는 함수
         function revealAndEraseText(element, delay) {
             var text = element.innerHTML;
             element.innerHTML = '';
@@ -113,14 +166,10 @@
                     i++;
                     setTimeout(reveal, delay);
                 } else {
-                    // 모든 글자가 나타난 후, 글자를 지우는 함수 호출
-                    {#setTimeout(waitText, delay); // 모든 글자가 나타난 후 1초 대기#}
-                    setTimeout(erase, 500); // 모든 글자가 나타난 후 1초 대기
+                    setTimeout(erase, 500);
 
                 }
             }
-
-            // 글자를 지우는 함수
             function erase() {
                 if (i >= 0) {
                     var newText = text.substring(0, i);
@@ -134,11 +183,8 @@
                      // 모든 글자가 지워진 후 1초 대기
                 }
             }
-
-            // 초기에 글자 나타내는 함수 호출
             reveal();
         }
-        // 함수 호출하여 글자를 나타내고 지우는 효과 적용
         window.onload = function () {
             var delay = 100; // 각 글자가 나타나거나 지워지는 시간 간격 (밀리초)
             var textElement = document.getElementById('welcomeText');

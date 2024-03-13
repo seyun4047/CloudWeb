@@ -10,7 +10,7 @@ urlpatterns = [
     path('download_list/', download_list, name='download_list'),
     path('download_image/<int:pk>', download_image, name='download_image'),
     path('delete_image/<int:pk>', delete_image, name='delete_image'),
-    path('', views.OurList.as_view(), name='our_list'),
+    path('', views.OurList.as_view(), name='gallery'),
     #     upload_our_images
     path('uploadourimg/', upload_our_images, name='upload_our_images'),
     path('delete_our_list/', delete_our_list, name='delete_our_list'),
