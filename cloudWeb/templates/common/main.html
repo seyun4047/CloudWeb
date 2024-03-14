@@ -40,11 +40,11 @@
         color: white;
     }
     .shortcutBtns{
-        width:100dvw;
-        height:10dvh;
+        width:100vw;
+        height:10vh;
         {#background-color: gray;#}
         position: absolute;
-        top: 41vh;
+        top: 41vw;
         z-index: 1;
         display: flex;
         justify-content: center;
@@ -52,28 +52,30 @@
     }
     .section1{
         background-color: black;
-        position: absolute;
+        position: relative;
         width: 100%;
-        height: 1000px;
-        top: 60dvw;
+        height: 105vw;
+        top: 65vw;
         display: flex;
         align-items: center;
         flex-direction: column;
+        z-index: 1;
     }
     .section2{
         background-color: black;
         position: absolute;
         width: 100%;
-        height: 1000px;
-        top: 130dvw;
+        height: 110vw;
+        top: 110vw;
         display: flex;
         align-items: center;
         flex-direction: column;
+        z-index: 2;
     }
 
     .filmgen-btn {
         position: relative;
-        margin-top: 2vh;
+        margin-top: 2vw;
         padding: 100px 150px;
         color: #fff;
         z-index: 1;
@@ -109,26 +111,35 @@
         color: white;
     }
     .smBtn {
-        margin-top: 10vh;
+        margin-top: 5vw;
     }
     .scBtn {
         font-weight: bold;
         font-size: 1vw;
         color: white;
-        display: none;
+        display: none; /* Flexbox 사용 */
+        align-items: center; /* 수직 중앙 정렬 */
+        justify-content: center; /* 수평 중앙 정렬 */
         margin-right: 3vw;
         margin-left: 3vw;
         text-align: center;
-        width: 100px;
-        height: 100px;
-        line-height: 85px;
+        width: 10vw;
+        height: 10vw;
     }
     .shortcutBtns:hover .scBtn {
-        display: block;
+        display: flex;
+    }
 
+    hr {
+        {#margin-top: vh;#}
+        background-color: whitesmoke;
+        width: 70%;
+        height: 2px;
+        z-index: 3;
+        {#border: 1px solid white; /* 테두리 추가 */#}
     }
     </style>
-    <>
+
     <img id='mainImg' src='/static/main/mainImg.jpg'>
     <div id="welcomeText">Welcome to MUTZIN STUDIO!</div>
     <div class="shortcutBtns">
@@ -136,13 +147,15 @@
         <a class="btn btn-outline-light scBtn" href="{% url 'gallery' %}">GALLERY</a>
         <a class="btn btn-outline-light scBtn" href="{% url 'lab:lab' %}">LAB</a>
     </div>
+
     <div class="section1">
         <div id="sec1-txt">Try a variety of photo conversion modules!</div>
         <div class="sec1-inttxt">Create new Image to Filmtic Photo</div>
         <a class="filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator</a>
         <a class="btn btn-outline-light smBtn" href="/lab">SHOW MORE</a>
     </div>
-<br>
+             <hr>
+
     <div class="section2">
         <div id="sec1-txt">I am</div>
         <a id="cvImg"></a>
