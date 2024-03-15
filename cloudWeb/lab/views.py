@@ -3,6 +3,8 @@ from .models import Post, ImgStackerPost
 from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
+from .FilmGen import FilmGen2
+
 from .ImgStacker import ImgStacker
 # Create your views here.
 def main(request):
@@ -18,6 +20,28 @@ def filmgen(request):
 #     if request.method == 'POST':
 #         print("hello")
 
+# # Filmgen1
+# def upload_film_image(request):
+#     # post = Post.objects.get(pk=post_id)
+#     if request.method == 'POST' and request.FILES.get('film_image'):
+#         image = request.FILES.get('film_image')
+#         p = Post.objects.create(image=image)
+#         print("img saved: ", p.image.path)
+#         #filmgen
+#         try:
+#             FilmGen.gen(p.image.path)
+#         except Exception:
+#             return render(request, 'lab/film/filmError.html')
+#         # FilmGen.gen(p.get_img_src())
+#         film_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
+#         ori_url_split =  film_ori_image_url.split('.')
+#         film_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
+#         return render(request, 'lab/film/filmgened.html', {'film_image_url': film_image_url, 'film_ori_image_url': film_ori_image_url})
+#         # return render(request, 'lab/film/filmgened.html')
+#     print("film_gen_error")
+#     return render(request, 'lab/film/filmgen.html')
+
+# FilmGen2
 def upload_film_image(request):
     # post = Post.objects.get(pk=post_id)
     if request.method == 'POST' and request.FILES.get('film_image'):
@@ -26,7 +50,7 @@ def upload_film_image(request):
         print("img saved: ", p.image.path)
         #filmgen
         try:
-            FilmGen.gen(p.image.path)
+            FilmGen2.gen(p.image.path)
         except Exception:
             return render(request, 'lab/film/filmError.html')
         # FilmGen.gen(p.get_img_src())

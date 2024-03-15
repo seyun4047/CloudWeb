@@ -8,10 +8,8 @@ import re
 import json
 import sys
 def string_to_list(input_string):
-    s = re.findall(r'[-+]?\d*\.\d+|\d+', input_string)
+    s = re.findall(r'[-+]?\d*\.\d+|[-+]?\d+', input_string)
     return [float(num) for num in s]
-    # return [float(x.strip()) for x in input_string.strip('[]').split(',')]
-
 def gen(imgSrc):
 
     openai.api_key = os.getenv('OPENAI_API_KEY')
