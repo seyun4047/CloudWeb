@@ -67,7 +67,7 @@ class SongRecByAi:
         def getResponseGemini():
             model = genai.GenerativeModel('gemini-pro')
             # response = model.generate_content(f"This is the settings taken from a certain photo. Look at this and recommend a song in your own way. This is the Text: camera brand:{data[0]},camera model:{data[1]},The time taken:{data[2]},Shutter Speed:{data[3]},ExposureTime:{data[4]},ISO:{data[5]},Fnumber:{data[6]}Lens:{data[7]}. You must not say anything other than the YouTube link(can Watch). Like: https://www.youtube.com/watch?v=VdQY7BusJNU ")
-            response = model.generate_content(f"This is the settings taken from a certain photo. Look at this and recommend a song in your own way. This is the Text: {image}. You must not say anything other than the YouTube link(can Watch). Like: https://www.youtube.com/watch?v=VdQY7BusJNU ")
+            response = model.generate_content(f"This is the settings taken from a certain photo. Look at this and Please recommend a song you found on YouTube. This is the Text: {image}. You must not say anything other than the YouTube link(can Watch). Like: https://www.youtube.com/xxx")
 
             return response
 
