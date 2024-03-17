@@ -53,16 +53,16 @@ class SongRecByAi:
         image.close()
 
         # print(info)
-        taglabel = {}
+        # taglabel = {}
 
-        for tag, value in info.items():
-            decoded = TAGS.get(tag, tag)
-            taglabel[decoded] = value
+        # for tag, value in info.items():
+        #     decoded = TAGS.get(tag, tag)
+        #     taglabel[decoded] = value
 
         # print(taglabel)
 
-        data = [taglabel['Make'], taglabel['Model'], taglabel['DateTime'], taglabel['ShutterSpeedValue'],
-                taglabel['ExposureTime'], taglabel['ISOSpeedRatings'], taglabel['FNumber'], taglabel['LensModel']]
+        # data = [taglabel['Make'], taglabel['Model'], taglabel['DateTime'], taglabel['ShutterSpeedValue'],
+        #         taglabel['ExposureTime'], taglabel['ISOSpeedRatings'], taglabel['FNumber'], taglabel['LensModel']]
 
         def getResponseGemini():
             model = genai.GenerativeModel('gemini-pro')
