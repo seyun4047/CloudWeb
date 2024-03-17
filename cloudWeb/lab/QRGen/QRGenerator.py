@@ -5,9 +5,13 @@ class QRGen:
     def __init__(self, path, data):
         print("hi this")
         self.img_path = path
+        print("img_path Ok")
         self.data = data
+        print("data OK")
         self.oriImg = cv2.imread(self.img_path)
+        print("oriImg OK")
         self.img = self.oriImg.copy()
+        print("copy OK")
         self.h, self.w = self.img.shape[:2]
         self.qrGen()
 
