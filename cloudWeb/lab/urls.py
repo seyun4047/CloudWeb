@@ -13,6 +13,8 @@ urlpatterns = [
     path('stackerup/', views.upload_ImgStacker_image, name='upload_ImgStacker_image'),
     path('qrgen/', views.qrgen, name='qrgen'),
     path('qrup/', views.upload_qr_image, name='upload_qr_image'),
+    path('songqrgen/', views.songqrgen, name='songqrgen'),
+    path('songqrup/', views.upload_song_qr_image, name='upload_song_qr_image'),
     path('download_image/<int:pk>/<int:n>', views.download_image, name='download_image')
 
     # path('logout/', views.logout_view, name='logout'),

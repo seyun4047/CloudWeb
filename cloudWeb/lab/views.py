@@ -2,13 +2,14 @@ import os
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, ImgStackerPost, QRPost
+from .models import Post, ImgStackerPost, QRPost, SongQRPost
 from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
 from .FilmGen import FilmGen2
 from .QRGen import QRGenerator
 from .ImgStacker import ImgStacker
+from .RecSongGen import SongRecByAi
 # Create your views here.
 def main(request):
     print("here, lab")
@@ -116,6 +117,30 @@ def upload_qr_image(request):
     print("qr_gen_error")
     return render(request, 'lab/qr/qrgen.html')
 
+def songqrgen(request):
+    print("here, songqrgen")
+    return render(request, 'lab/songqr/songqrgen.html')
+def upload_song_qr_image(request):
+    # post = Post.objects.get(pk=post_id)
+    if request.method == 'POST' and request.FILES.get('song_qr_image'):
+        image = request.FILES.get('song_qr_image')
+        # data = request.POST.get('song_qr_content')
+        p = SongQRPost.objects.create(image=image)
+        print("img saved: ", p.image.path)
+        try:
+            print("path is", p.image.path)
+            SongRecByAi.SongRecByAi(p.image.path)
+        except Exception as e:
+            print("error:", type(e).__name__)
+            return render(request, 'lab/songqr/songqrError.html')
+        ori_image_url = p.image.url  # 이미지의 URL을 가져옴
+        ori_url_split = ori_image_url.split('.')
+        song_qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
+        return render(request, 'lab/songqr/songqrgened.html', {'song_qr_image_url': song_qr_image_url, 'pk':p.pk})
+        # return render(request, 'lab/film/filmgened.html')
+    print("song_qr_gen_error")
+    return render(request, 'lab/songqr/songqrgen.html')
+
 
 def download_image(request, pk, n):
     if n == 1:
@@ -124,6 +149,8 @@ def download_image(request, pk, n):
         p = ImgStackerPost
     elif n == 3:
         p = QRPost
+    elif n == 4:
+        p = SongQRPost
 
     # 해당 모델 객체를 가져옵니다.
     file_obj = get_object_or_404(p, pk=pk)

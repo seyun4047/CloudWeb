@@ -44,6 +44,7 @@ class PostDetail(DetailView):
 class OurPost(models.Model):
     # title = models.CharField(max_length=255, black=True)
     image = models.FileField(upload_to='sharepage/ourImages', blank=True)
+    content = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
