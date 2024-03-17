@@ -20,7 +20,7 @@ class QRGen:
         print("writed", self.new_path)
         return cv2.imread(self.new_path)
     def writeImg(self):
-        self.new_path=self.img_path.split(".")[0] + "_qr_gen." + self.img_path.split(".")[1]
+        self.new_path=self.img_path.split(".")[0] + "_gen." + self.img_path.split(".")[1]
         cv2.imwrite(self.new_path,self.img)
     def qrImgGen(self):
         qr = qrcode.QRCode(

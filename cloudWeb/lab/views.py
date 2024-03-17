@@ -60,7 +60,7 @@ def upload_film_image(request):
         film_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split =  film_ori_image_url.split('.')
         film_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
-        return render(request, 'lab/film/filmgened.html', {'film_image_url': film_image_url, 'film_ori_image_url': film_ori_image_url})
+        return render(request, 'lab/film/filmgened.html', {'film_image_url': film_image_url, 'film_ori_image_url': film_ori_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
     print("film_gen_error")
     return render(request, 'lab/film/filmgen.html')
@@ -87,7 +87,7 @@ def upload_ImgStacker_image(request):
         else:
             generated_path_split = postedImgLst[0].image.url.split('.')
             generated_path = generated_path_split[0] + "_gen." + generated_path_split[1]
-            return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url})
+            return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url, 'pk':postedImgLst[1].pk})
     print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
 def qrgen(request):
@@ -110,24 +110,27 @@ def upload_qr_image(request):
 
         qr_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split = qr_ori_image_url.split('.')
-        qr_image_url = ori_url_split[0] + "_qr_gen." + ori_url_split[1]
+        qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
         return render(request, 'lab/qr/qrgened.html', {'qr_image_url': qr_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
     print("qr_gen_error")
     return render(request, 'lab/qr/qrgen.html')
 
+
 def download_image(request, pk, n):
-    if n==1:
+    if n == 1:
         p = Post
-    elif n==2:
+    elif n == 2:
         p = ImgStackerPost
-    elif n==3:
+    elif n == 3:
         p = QRPost
-    # 해당 모델 객체를 가져옵니다. 예를 들어 Post 모델을 사용하려면 Post 모델에 대한 import를 해야 합니다.
+
+    # 해당 모델 객체를 가져옵니다.
     file_obj = get_object_or_404(p, pk=pk)
 
-    # 이미지의 경로를 가져옵니다.
-    image_path = file_obj.image.path
+    ori_image_url = file_obj.image.path  # 이미지의 URL을 가져옴
+    ori_url_split = ori_image_url.split('.')
+    image_path = ori_url_split[0] + "_gen." + ori_url_split[1]
 
     # 파일이 존재하는지 확인합니다.
     if os.path.exists(image_path):
