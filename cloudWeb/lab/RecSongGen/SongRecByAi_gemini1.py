@@ -20,7 +20,7 @@ def to_markdown(text):
 sys.path.append("../")
 from QRGen import QRGenerator
 
-
+ 
 class SongRecByAi:
     def __init__(self, path):
         self.path = path
