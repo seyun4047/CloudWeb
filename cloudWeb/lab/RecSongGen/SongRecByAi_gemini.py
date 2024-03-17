@@ -18,7 +18,7 @@ def to_markdown(text):
   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
 
 sys.path.append("../")
-from QRGen import QRGenerator
+from ..QRGen import QRGenerator
 
  
 class SongRecByAi:
@@ -77,7 +77,7 @@ class SongRecByAi:
 
         return response
 
-SongRecByAi("test.jpg")
+# SongRecByAi("test.jpg")
 # songUrl = gen()
 # check_link_validity(songUrl)
 # QRGenerator.QRGen("test.jpg",songUrl)
