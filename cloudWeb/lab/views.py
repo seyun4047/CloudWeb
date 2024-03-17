@@ -9,7 +9,9 @@ from .FilmGen import FilmGen
 from .FilmGen import FilmGen2
 from .QRGen import QRGenerator
 from .ImgStacker import ImgStacker
-from .RecSongGen import SongRecByAi
+# from .RecSongGen import SongRecByAi_chatgpt
+from .RecSongGen import SongRecByAi_gemini
+
 # Create your views here.
 def main(request):
     print("here, lab")
@@ -129,7 +131,8 @@ def upload_song_qr_image(request):
         print("img saved: ", p.image.path)
         try:
             print("path is", p.image.path)
-            SongRecByAi.SongRecByAi(p.image.path)
+            SongRecByAi_gemini.SongRecByAi(p.image.path)
+            # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
         except Exception as e:
             print("error:", type(e).__name__)
             return render(request, 'lab/songqr/songqrError.html')
