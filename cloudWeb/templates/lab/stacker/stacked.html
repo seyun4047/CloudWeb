@@ -4,5 +4,7 @@
     <div class="row-cols-1">
         <img src="{{ stacked_ori_image_url }}" alt="Original Image" style="max-width: 30vw; height: auto;">
         <img src="{{ stacked_image_url }}" alt="Modified Stacked Image" style="max-width: 30vw; height: auto;">
-</div>
+    </div>
+    <a class="btn btn-outline-light smBtn" href="/lab/imgstack">Image Stacker</a>
+    <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=2 %}">download</a>
 {% endblock %}
