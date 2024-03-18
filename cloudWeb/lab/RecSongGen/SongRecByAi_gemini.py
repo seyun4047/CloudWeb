@@ -12,8 +12,9 @@ from ..QRGen import QRGenerator
 
 
 class SongRecByAi:
-    def __init__(self, path):
+    def __init__(self, path, color):
         self.path = path
+        self.color = color
         self.gen()
         # self.qrGen()
 
@@ -21,7 +22,7 @@ class SongRecByAi:
         songTitle = self.songGen()
         songUrl = self.get_video_links(songTitle)
         self.check_link_validity(songUrl)
-        QRGenerator.QRGen(self.path, songUrl)
+        QRGenerator.QRGen(self.path, songUrl, self.color)
 
     def check_link_validity(self, url):
         try:

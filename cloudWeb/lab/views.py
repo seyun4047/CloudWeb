@@ -101,12 +101,14 @@ def upload_qr_image(request):
     if request.method == 'POST' and request.FILES.get('qr_image'):
         image = request.FILES.get('qr_image')
         data = request.POST.get('qr_content')
+        color = request.POST.get('qr_color')
+        print("color", color)
         p = QRPost.objects.create(image=image, content=data)
         print("img saved: ", p.image.path)
         try:
             print("path is", p.image.path)
             print("data:", p.content)
-            QRGenerator.QRGen(p.image.path, p.content)
+            QRGenerator.QRGen(p.image.path, p.content, color)
         except Exception as e:
             print("error:", type(e).__name__)
             return render(request, 'lab/qr/qrError.html')
@@ -126,12 +128,12 @@ def upload_song_qr_image(request):
     # post = Post.objects.get(pk=post_id)
     if request.method == 'POST' and request.FILES.get('song_qr_image'):
         image = request.FILES.get('song_qr_image')
-        # data = request.POST.get('song_qr_content')
+        color = request.POST.get('song_qr_color')
         p = SongQRPost.objects.create(image=image)
         print("img saved: ", p.image.path)
         try:
             print("path is", p.image.path)
-            SongRecByAi_gemini.SongRecByAi(p.image.path)
+            SongRecByAi_gemini.SongRecByAi(p.image.path, color)
             # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
         except Exception as e:
             print("error:", type(e).__name__)

@@ -5,8 +5,12 @@
         <img src="{{ film_ori_image_url }}" alt="Original Film Image" style="max-width: 30vw; height: auto;">
         <img src="{{ film_image_url }}" alt="Modified Film Image" style="max-width: 30vw; height: auto;">
     </div>
-    <div class="row-cols-1">
-        <a class="btn btn-outline-light smBtn" href="/lab/filmgen">Film Gen</a>
-        <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=1 %}">download</a>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=1 %}">download</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="/lab/filmgen">Film Gen</a>
+        </div>
     </div>
 {% endblock %}

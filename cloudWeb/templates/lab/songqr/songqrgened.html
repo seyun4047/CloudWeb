@@ -3,8 +3,13 @@
 <h1>노래 감성영역을 경험하세요</h1>
     <img src="{{ song_qr_image_url }}" alt="Modified Qr Image" style="max-width: 30vw; height: auto;">
     <h1></h1>
-    <div class="row-cols-1">
-    <a class="btn btn-outline-light smBtn" href="/lab/songqrgen">Song QR Gen</a>
-    <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=4 %}">download</a>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=4 %}">download</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="/lab/songqrgen">Song QR Gen</a>
+
+        </div>
     </div>
 {% endblock %}

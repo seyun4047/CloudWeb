@@ -51,6 +51,13 @@
         <input type="text" class="form-control" name="qr_content" id="qr_content"
                    value="{{ form.email.value|default_if_none:'' }}" placeholder="Enter URL">
         <h1></h1>
+        <hr>
+        <h3>QR CODE COLOR</h3>
+        <input class="" type="radio" name="qr_color" value="0" id="qr_color_w" class="form-control checked">
+        <label for="qr_color_w">BLACK</label>
+        <input class="" type="radio" name="qr_color" value="255" id="qr_color_b" class="form-control">
+        <label for="qr_color_b">WHITE</label>
+        <hr>
         <button type="submit">GENERATE!</button>
 
     </form>
@@ -61,5 +68,19 @@
             var fileName = input.files[0].name; // 선택한 파일의 이름 가져오기
             document.getElementById('selectedFileName').innerText = fileName; // 레이블에 파일 이름 표시
         }
+    </script>
+    <script>
+    const qrColorLeft = document.getElementById('qr_color_w');
+    const qrColorRight = document.getElementById('qr_color_b');
+
+    function getQrColor() {
+      if (qrColorLeft.checked) {
+        return 0;
+      } else if (qrColorRight.checked) {
+        return 255;
+      } else {
+        return null;
+      }
+    }
     </script>
 </body>

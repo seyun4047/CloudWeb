@@ -10,14 +10,15 @@ import sys
 from ..QRGen import QRGenerator
 
 class SongRecByAi:
-    def __init__(self, path):
-        self.path=path
+    def __init__(self, path, color):
+        self.path = path
+        self.color = color
         self.gen()
         # self.qrGen()
     def gen(self):
         songUrl = self.songGen()
         self.check_link_validity(songUrl)
-        QRGenerator.QRGen(self.path, songUrl)
+        QRGenerator.QRGen(self.path, songUrl, self.color)
 
     def check_link_validity(self,url):
         try:

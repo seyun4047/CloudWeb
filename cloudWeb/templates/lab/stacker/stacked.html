@@ -6,8 +6,12 @@
         <img src="{{ stacked_image_url }}" alt="Modified Stacked Image" style="max-width: 30vw; height: auto;">
     </div>
     <h1></h1>
-    <div class="row-cols-1">
-    <a class="btn btn-outline-light smBtn" href="/lab/imgstack">Image Stacker</a>
-    <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=2 %}">download</a>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=2 %}">download</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="/lab/imgstack">Image Stacker</a>
+        </div>
     </div>
 {% endblock %}
