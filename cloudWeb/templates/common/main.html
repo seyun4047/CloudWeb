@@ -99,7 +99,16 @@
         font-size: 2vw;
         color: white;
     }
-    .filmgen-btn {
+    .sec1-inttxt-plus{
+        margin-top: 1vh;
+        font-style: italic;
+        background-color: black;
+        position: relative;
+        font-weight: bold;
+        font-size: 1.5vw;
+        color: white;
+    }
+    .sec1-btn {
         position: relative;
         margin-top: 2vw;
         padding: 100px 150px;
@@ -109,10 +118,15 @@
         text-decoration: none;
         background-size: cover;
         background-position: center;
+    }
+    .filmgen-btn {
         background-image: url('/static/lab/filmbtn.jpg');
     }
     .filmgen-btn:hover {
         background-image: url('/static/lab/film.gif');
+    }
+    .songqrgen-btn {
+
     }
     .smBtn {
         margin-top: 5vw;
@@ -146,14 +160,18 @@
     </div>
     <div class="section1">
         <div id="sec-txt">Try a variety of photo conversion modules!</div>
-        <div class="sec1-inttxt">Create new Image to Filmtic Photo</div>
-        <a class="filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator</a>
+        <div class="sec1-inttxt">Create Image to Filmtic Photo By AI</div>
+        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator By AI</a>
+        <hr>
+        <div class="sec1-inttxt">Get Recommendations For Songs Match The Photo!</div>
+        <p class="sec1-inttxt-plus">The Song Is Attached To The Photo With A QR CODE</p>
+        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>
         <a class="btn btn-outline-light smBtn" href="/lab">SHOW MORE</a>
     </div>
     <div class="section2">
     <hr>
         <div id="sec-txt">I am</div>
-        <a id="cvImg"></a>
+        <a id="cvImg" onclick="cvImg()"></a>
     </div>
     <hr>
 </body>
@@ -209,6 +227,10 @@
         for (var i = 0; i < scBtns.length; i++) {
             scBtns[i].style.display = 'flex';
         }
+    }
+    function cvImg() {
+        var cvImg = document.getElementById('cvImg');
+        cvImg.style.backgroundImage = "url('/static/main/cv.gif')";
     }
 </script>
 {% endblock %}
