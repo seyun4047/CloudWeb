@@ -66,20 +66,24 @@ class QRGen:
 
     def putQRonImg(self):
         self.qrImg = np.array(self.qrImg)
-
-        _, mask = cv2.threshold(self.qrImg[:, :, 3], 1, 255, cv2.THRESH_BINARY)
-        mask_inv = cv2.bitwise_not(mask)
-
+        qrh, qrw = self.qrImg.shape[:2]
         qrImg = cv2.cvtColor(self.qrImg, cv2.COLOR_BGRA2BGR)
-        qrh, qrw = qrImg.shape[:2]
-        roi = self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10]
+        if int(self.qr_background)==0:
 
-        masked_qrImg = cv2.bitwise_and(qrImg, qrImg, mask=mask)
-        masked_img = cv2.bitwise_and(roi, roi, mask=mask_inv)
+            _, mask = cv2.threshold(self.qrImg[:, :, 3], 1, 255, cv2.THRESH_BINARY)
+            mask_inv = cv2.bitwise_not(mask)
 
-        added = masked_qrImg + masked_img
-        self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = added
+            # qrImg = cv2.cvtColor(self.qrImg, cv2.COLOR_BGRA2BGR)
+            # qrh, qrw = qrImg.shape[:2]
+            roi = self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10]
 
+            masked_qrImg = cv2.bitwise_and(qrImg, qrImg, mask=mask)
+            masked_img = cv2.bitwise_and(roi, roi, mask=mask_inv)
+
+            added = masked_qrImg + masked_img
+            self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = added
+        else:
+            self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = qrImg
         # 합성된 이미지 저장
         # cv2.imwrite('img_gen.jpeg', self.img)
 
