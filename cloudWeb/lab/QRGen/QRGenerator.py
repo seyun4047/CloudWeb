@@ -51,7 +51,7 @@ class QRGen:
         mlen = (int(max(self.h, self.w) / 7))
         print(mlen)
         self.qrImg = self.qrImg.resize((mlen, mlen))
-        if self.qr_background==0:
+        if int(self.qr_background)==0:
         # 투명 배경 생성
             datas = self.qrImg.getdata()
             new_data = []
