@@ -136,7 +136,9 @@ def upload_song_qr_image(request):
         # print("img saved: ", p.image.path)
         try:
             # print("path is", p.image.path)
-            SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
+            songRec = SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
+            songUrl = songRec.songUrl
+            print(songUrl)
             # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
         except Exception as e:
             # print("error:", type(e).__name__)
@@ -144,7 +146,7 @@ def upload_song_qr_image(request):
         ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split = ori_image_url.split('.')
         song_qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
-        return render(request, 'lab/songqr/songqrgened.html', {'song_qr_image_url': song_qr_image_url, 'pk':p.pk})
+        return render(request, 'lab/songqr/songqrgened.html', {'song_qr_image_url': song_qr_image_url, 'pk':p.pk, 'songUrl':songUrl})
         # return render(request, 'lab/film/filmgened.html')
     # print("song_qr_gen_error")
     return render(request, 'lab/songqr/songqrgen.html')

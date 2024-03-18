@@ -16,15 +16,13 @@ class SongRecByAi:
         self.path = path
         self.color = color
         self.background = background
-        # print(self.background)
         self.gen()
-        # self.qrGen()
 
     def gen(self):
         songTitle = self.songGen()
-        songUrl = self.get_video_links(songTitle)
-        self.check_link_validity(songUrl)
-        QRGenerator.QRGen(self.path, songUrl, self.color, self.background)
+        self.songUrl = self.get_video_links(songTitle)
+        self.check_link_validity(self.songUrl)
+        QRGenerator.QRGen(self.path, self.songUrl, self.color, self.background)
 
     def check_link_validity(self, url):
         try:
@@ -47,7 +45,7 @@ class SongRecByAi:
             model = genai.GenerativeModel('gemini-pro')
             # response = model.generate_content(f"이미지의 텍스트를 주면 이에 어울리는 분위기를 파악하고 노래를 추천해줘. 노래는 k-pop 45%, j-pop 35%, global-music 20% 우선순위를 가져. 오래되지않은 노래면 좋겠어. 대답은 무조건 노래제목-가수이름 혹은 가수이름-노래제목 으로 알려줘. 예를들어 이렇게 대답해. 라일락-아이유. 다음은 이미지야. {image}")
             # response = model.generate_content(f"If I give you the text of an image, it will identify the mood that matches it and recommend a song. Songs have 45% priority on k-pop, 35% on j-pop, and 20% on global-music. I hope it's a song that isn't old. Please tell me the answer as song title-singer name or singer name-song title. For example, answer like this: Lilac - IU. Next is the image. {image}")
-            response = model.generate_content(f"I'm going to give the text of the image. You recommend a song by understanding the mood, emotion, environment, time, season, etc. of this text. Songs have 35% priority on k-pop, 35% on j-pop, and 30% on global-music. Please tell me the answer as '[mv]song title-singer name' or '[mv]singer name-song title'. For example, answer like this: [mv]Lilac - IU. Next is the image. {image}")
+            response = model.generate_content(f"I'm going to give the text of the image. You recommend a song by understanding the mood, emotion, environment, time, season, etc. of this text. Songs have 35% priority on k-pop, 35% on j-pop, and 30% on global-music. Please tell me the answer as '[mv]song title-singer name' or '[mv]singer name-song title' and K-pop is in Korean, j-pop is in Japanese, and global music is in English. For example, answer like this: [mv]Lilac - IU. Next is the image. {image}")
             return response
 
         response = getResponseGemini()
