@@ -7,10 +7,6 @@ import google.generativeai as genai
 from googleapiclient.discovery import build
 from IPython.display import Markdown
 
-def to_markdown(text):
-  text = text.replace('•', '  *')
-  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True))
-
 sys.path.append("../")
 from ..QRGen import QRGenerator
 
@@ -45,10 +41,8 @@ class SongRecByAi:
         # print(image)
         def getResponseGemini():
             model = genai.GenerativeModel('gemini-pro')
-            # response = model.generate_content(f"This is the settings taken from a certain photo. Look at this and recommend a song in your own way. This is the Text: camera brand:{data[0]},camera model:{data[1]},The time taken:{data[2]},Shutter Speed:{data[3]},ExposureTime:{data[4]},ISO:{data[5]},Fnumber:{data[6]}Lens:{data[7]}. You must not say anything other than the YouTube link(can Watch). Like: https://www.youtube.com/watch?v=VdQY7BusJNU ")
-            # response = model.generate_content(f"This is the settings taken from a certain photo. Look at this and Please recommend a song you found on YouTube(can watch). This is the image: {image}. You must not say anything other than the YouTube link(can Watch). Like: https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-            response = model.generate_content(f"이미지의 텍스트를 주면 이에 어울리는 분위기를 파악하고 노래를 추천해줘. 노래는 k-pop, j-pop, global-music 우선순위를 가져. 오래되지않은 노래면 좋겠어. 대답은 무조건 제목-가수이름 으로 알려줘. 예를들어 이렇게 대답해. 라일락-아이유. 다음은 이미지야. {image}")
-
+            # response = model.generate_content(f"이미지의 텍스트를 주면 이에 어울리는 분위기를 파악하고 노래를 추천해줘. 노래는 k-pop 45%, j-pop 35%, global-music 20% 우선순위를 가져. 오래되지않은 노래면 좋겠어. 대답은 무조건 노래제목-가수이름 혹은 가수이름-노래제목 으로 알려줘. 예를들어 이렇게 대답해. 라일락-아이유. 다음은 이미지야. {image}")
+            response = model.generate_content(f"If I give you the text of an image, it will identify the mood that matches it and recommend a song. Songs have 45% priority on k-pop, 35% on j-pop, and 20% on global-music. I hope it's a song that isn't old. Please tell me the answer as song title-singer name or singer name-song title. For example, answer like this: Lilac - IU. Next is the image. {image}")
             return response
 
         response = getResponseGemini()
@@ -56,8 +50,6 @@ class SongRecByAi:
         print(response)
 
         return response
-
-
     def get_video_links(self, query):
         DEVELOPER_KEY = os.getenv('YOUTUBE_API_KEY')
         youtube = build('youtube', 'v3', developerKey=DEVELOPER_KEY)
@@ -66,16 +58,15 @@ class SongRecByAi:
           q=query,
           order="relevance",
           part="snippet",
-          maxResults=10,
+          maxResults=1,
           type="video"  # 비디오만 검색 결과로 받기
         ).execute()
 
-        video_links = []
+        video_link = ''
         for search_result in search_response.get('items', []):
           if search_result['id']['kind'] == 'youtube#video':
             video_id = search_result['id']['videoId']
             video_link = f"https://www.youtube.com/watch?v={video_id}"
-            video_links.append(video_link)
 
-        return video_links[0]
+        return video_link
 # SongRecByAi("test2.jpeg")

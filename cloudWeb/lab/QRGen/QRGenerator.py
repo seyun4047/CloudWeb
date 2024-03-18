@@ -3,25 +3,24 @@ import cv2
 import numpy as np
 class QRGen:
     def __init__(self, path, data):
-        print("hi this")
         self.img_path = path
-        print("img_path Ok")
+        # print("img_path Ok")
         self.data = data
-        print("data OK")
+        # print("data OK")
         self.oriImg = cv2.imread(self.img_path)
-        print("oriImg OK")
+        # print("oriImg OK")
         self.img = self.oriImg.copy()
-        print("copy OK")
+        # print("copy OK")
         self.h, self.w = self.img.shape[:2]
         self.qrGen()
 
     def qrGen(self):
         self.qrImgGen()
-        print("QR gened")
+        # print("QR gened")
         self.putQRonImg()
-        print("QR putQronImg")
+        # print("QR putQronImg")
         self.writeImg()
-        print("writed", self.new_path)
+        # print("writed", self.new_path)
         return cv2.imread(self.new_path)
     def writeImg(self):
         self.new_path=self.img_path.split(".")[0] + "_gen." + self.img_path.split(".")[1]
@@ -41,7 +40,7 @@ class QRGen:
         # Pillow 이미지로 변환
         self.qrImg = self.qrImg.convert("RGBA")
 
-        mlen = (int(max(self.h, self.w) / 6))
+        mlen = (int(max(self.h, self.w) / 7))
         print(mlen)
         self.qrImg = self.qrImg.resize((mlen, mlen))
         # 투명 배경 생성
@@ -58,11 +57,6 @@ class QRGen:
 
     def putQRonImg(self):
         self.qrImg = np.array(self.qrImg)
-        # img = cv2.imread('test.jpeg')
-
-        # h, w = self.img.shape[:2]
-        # resizeSize = int(max(h, w) / 7)
-        # self.qrImg = cv2.resize(self.qrImg, (resizeSize, resizeSize), interpolation=cv2.INTER_AREA)
 
         _, mask = cv2.threshold(self.qrImg[:, :, 3], 1, 255, cv2.THRESH_BINARY)
         mask_inv = cv2.bitwise_not(mask)
