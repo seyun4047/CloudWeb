@@ -8,7 +8,7 @@ def imgStack(files):
         img_len = len(files)
         # Get the url of three photos taken in the same place
         img_path = [files[i].image.path for i in range(img_len)]
-        print("this imgstacker img_path",img_path)
+        # print("this imgstacker img_path",img_path)
 
     # img_path = [f"svg/img2/img{i}.JPG" for i in range(1,6,1)]
 
@@ -40,5 +40,5 @@ def imgStack(files):
 
         return True
     except Exception as e:
-        print("stacked error!!!!!")
+        # print("stacked error!!!!!")
         return False

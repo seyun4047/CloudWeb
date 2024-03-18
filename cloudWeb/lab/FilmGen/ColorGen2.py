@@ -3,7 +3,7 @@ import numpy as np
 
 class ColorOp:
     def __init__(self, path):
-        print("this way:" + path)
+        # print("this way:" + path)
         self.img_path = path
         self.oriImg = cv2.imread(self.img_path)
         self.img = self.oriImg.copy()
@@ -25,21 +25,21 @@ class ColorOp:
 
     def getFilmImg(self, b, cr, cb, c, g):
         self.img = cv2.cvtColor(self.img, cv2.COLOR_BGR2YCrCb)
-        print("converted! BGR2YCrCb")
+        # print("converted! BGR2YCrCb")
         self.setBrightness(b)
-        print("set Brightness!")
+        # print("set Brightness!")
         self.setTemperature(cr, cb)
-        print("set Cr Cb!")
+        # print("set Cr Cb!")
         # YCrCb2BGR
         self.img = cv2.cvtColor(self.img, cv2.COLOR_YCrCb2BGR)
-        print("converted! YCrCb2BGR")
+        # print("converted! YCrCb2BGR")
         self.setContrast(c)
-        # print("set Contrast!")
+#         # print("set Contrast!")
         self.setGrain(g)
-        print("set Grain!")
+        # print("set Grain!")
         # save & return
         self.writeImg()
-        print("Saved!" + self.new_path)
+        # print("Saved!" + self.new_path)
         return cv2.imread(self.new_path)
 
     # write

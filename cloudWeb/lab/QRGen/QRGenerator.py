@@ -4,9 +4,9 @@ import numpy as np
 class QRGen:
     def __init__(self, path, data, qr_color, qr_background):
         self.img_path = path
-        print("img_path Ok")
+        # print("img_path Ok")
         self.data = data
-        print("data OK")
+        # print("data OK")
         self.qr_color = int(qr_color)
         if self.qr_color==255:
             self.qr_vcolor=0
@@ -14,19 +14,19 @@ class QRGen:
             self.qr_vcolor=255
         self.qr_background = qr_background
         self.oriImg = cv2.imread(self.img_path)
-        print("oriImg OK")
+        # print("oriImg OK")
         self.img = self.oriImg.copy()
-        print("copy OK")
+        # print("copy OK")
         self.h, self.w = self.img.shape[:2]
         self.qrGen()
 
     def qrGen(self):
         self.qrImgGen()
-        print("QR gened")
+        # print("QR gened")
         self.putQRonImg()
-        print("QR putQronImg")
+        # print("QR putQronImg")
         self.writeImg()
-        print("writed", self.new_path)
+        # print("writed", self.new_path)
         return cv2.imread(self.new_path)
     def writeImg(self):
         self.new_path=self.img_path.split(".")[0] + "_gen." + self.img_path.split(".")[1]
@@ -49,7 +49,7 @@ class QRGen:
         self.qrImg = self.qrImg.convert("RGBA")
 
         mlen = (int(max(self.h, self.w) / 7))
-        print(mlen)
+        # print(mlen)
         self.qrImg = self.qrImg.resize((mlen, mlen))
         if int(self.qr_background)==0:
         # 투명 배경 생성

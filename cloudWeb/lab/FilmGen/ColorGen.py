@@ -3,7 +3,7 @@ import numpy as np
 
 class ColorOp:
     def __init__(self, path):
-        print("this way:" + path)
+        # print("this way:" + path)
         self.img_path = path
         self.oriImg = cv2.imread(self.img_path)
         self.img = self.oriImg.copy()
@@ -24,7 +24,7 @@ class ColorOp:
         return self.img
 
     def getFilmImg(self, e, c, t, g, gc):
-        # print(self.oriImg)
+#         # print(self.oriImg)
         self.img = self.oriImg.copy()
         self.downSizeImg(self.img, self.img_path)
         # cv2.imwrite("isori.jpeg", self.img)

@@ -67,7 +67,7 @@ def gen(imgSrc):
                 try:
                     response = getResponseChatgpt("gpt-3.5-turbo-0301")
                 except Exception as e3:
-                    print("openai error[1]!!!!!!")
+                    # print("openai error[1]!!!!!!")
                     return ""
         return response
 
@@ -81,15 +81,15 @@ def gen(imgSrc):
                 try:
                     response = getResponseChatgpt2("gpt-3.5-turbo-0301")
                 except Exception as e3:
-                    print("openai error[2]!!!!!!")
+                    # print("openai error[2]!!!!!!")
                     return ""
         return response
 
     response = responseChatgpt()
     answer1 = response.choices[0].message.content
-    print(answer1)
+    # print(answer1)
     answer1 = string_to_list(answer1)
-    print(answer1)
+    # print(answer1)
     fixed1 = c.getFilmImg(int(answer1[0]),int(answer1[1]),int(answer1[2]),float(answer1[3]),float(answer1[4]))
 
     response = responseChatgpt2()
@@ -97,7 +97,7 @@ def gen(imgSrc):
     answer2 = string_to_list(answer2)
 
     # 다시 c 1 원본 에 집어넣기
-    print(answer2)
+    # print(answer2)
     fixed2 = c.getFilmImg(int(answer2[0]),int(answer2[1]),int(answer2[2]),float(answer2[3]),float(answer2[4]))
 
     new_img_src = imgSrc+"gen_size.jpeg"

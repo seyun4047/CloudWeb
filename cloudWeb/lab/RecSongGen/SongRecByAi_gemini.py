@@ -16,7 +16,7 @@ class SongRecByAi:
         self.path = path
         self.color = color
         self.background = background
-        print(self.background)
+        # print(self.background)
         self.gen()
         # self.qrGen()
 
@@ -30,19 +30,19 @@ class SongRecByAi:
         try:
             response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
-                print("checked link validity!")
+                # print("checked link validity!")
                 return True
             else:
                 return False
         except requests.ConnectionError:
-            print("error")
+            # print("error")
             return False
 
     def songGen(self):
         GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
         image = cv2.imread(self.path)
 
-        # print(image)
+#         # print(image)
         def getResponseGemini():
             model = genai.GenerativeModel('gemini-pro')
             # response = model.generate_content(f"이미지의 텍스트를 주면 이에 어울리는 분위기를 파악하고 노래를 추천해줘. 노래는 k-pop 45%, j-pop 35%, global-music 20% 우선순위를 가져. 오래되지않은 노래면 좋겠어. 대답은 무조건 노래제목-가수이름 혹은 가수이름-노래제목 으로 알려줘. 예를들어 이렇게 대답해. 라일락-아이유. 다음은 이미지야. {image}")

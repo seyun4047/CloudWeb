@@ -14,17 +14,17 @@ from .RecSongGen import SongRecByAi_gemini
 
 # Create your views here.
 def main(request):
-    print("here, lab")
+    # print("here, lab")
     return render(request, 'lab/lab_main.html')
 
 def filmgen(request):
-    print("here, filmgen")
+    # print("here, filmgen")
     return render(request, 'lab/film/filmgen.html')
     # return render(request, 'lab/form.html')
 
 # def hi(request):
 #     if request.method == 'POST':
-#         print("hello")
+# #         print("hello")
 
 # # Filmgen1
 # def upload_film_image(request):
@@ -32,7 +32,7 @@ def filmgen(request):
 #     if request.method == 'POST' and request.FILES.get('film_image'):
 #         image = request.FILES.get('film_image')
 #         p = Post.objects.create(image=image)
-#         print("img saved: ", p.image.path)
+# #         print("img saved: ", p.image.path)
 #         #filmgen
 #         try:
 #             FilmGen.gen(p.image.path)
@@ -44,7 +44,7 @@ def filmgen(request):
 #         film_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
 #         return render(request, 'lab/film/filmgened.html', {'film_image_url': film_image_url, 'film_ori_image_url': film_ori_image_url})
 #         # return render(request, 'lab/film/filmgened.html')
-#     print("film_gen_error")
+# #     print("film_gen_error")
 #     return render(request, 'lab/film/filmgen.html')
 
 # FilmGen2
@@ -53,7 +53,7 @@ def upload_film_image(request):
     if request.method == 'POST' and request.FILES.get('film_image'):
         image = request.FILES.get('film_image')
         p = Post.objects.create(image=image)
-        print("img saved: ", p.image.path)
+        # print("img saved: ", p.image.path)
         #filmgen
         try:
             FilmGen2.gen(p.image.path)
@@ -65,14 +65,14 @@ def upload_film_image(request):
         film_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
         return render(request, 'lab/film/filmgened.html', {'film_image_url': film_image_url, 'film_ori_image_url': film_ori_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
-    print("film_gen_error")
+    # print("film_gen_error")
     return render(request, 'lab/film/filmgen.html')
 
 # def show_film_image(request, img_path):
 #     render(request, 'lab/lab_main.html')
 
 def imgStack(request):
-    print("here, image stacker")
+    # print("here, image stacker")
     return render(request, 'lab/stacker/stacker.html')
 
 def upload_ImgStacker_image(request):
@@ -81,20 +81,20 @@ def upload_ImgStacker_image(request):
         postedImgLst = list()
         for img in imgs:
             postedImgLst.append(ImgStackerPost.objects.create(image=img))
-        print("this postedImgLst", postedImgLst)
+        # print("this postedImgLst", postedImgLst)
         # stackedImgUrl = ImgStacker.imgStack(postedImgLst)
         gen = ImgStacker.imgStack(postedImgLst)
         if not gen:
-            print("stacked error")
+            # print("stacked error")
             return render(request, 'lab/stacker/stackError.html')
         else:
             generated_path_split = postedImgLst[0].image.url.split('.')
             generated_path = generated_path_split[0] + "_gen." + generated_path_split[1]
             return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url, 'pk':postedImgLst[1].pk})
-    print("stacked error")
+    # print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
 def qrgen(request):
-    print("here, qrgen")
+    # print("here, qrgen")
     return render(request, 'lab/qr/qrgen.html')
 def upload_qr_image(request):
     # post = Post.objects.get(pk=post_id)
@@ -103,16 +103,16 @@ def upload_qr_image(request):
         data = request.POST.get('qr_content')
         color = request.POST.get('qr_color')
         background = request.POST.get('qr_background')
-        print("background", background)
-        print("color", color)
+        # print("background", background)
+        # print("color", color)
         p = QRPost.objects.create(image=image, content=data)
-        print("img saved: ", p.image.path)
+        # print("img saved: ", p.image.path)
         try:
-            print("path is", p.image.path)
-            print("data:", p.content)
+            # print("path is", p.image.path)
+            # print("data:", p.content)
             QRGenerator.QRGen(p.image.path, p.content, color, background)
         except Exception as e:
-            print("error:", type(e).__name__)
+            # print("error:", type(e).__name__)
             return render(request, 'lab/qr/qrError.html')
 
         qr_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
@@ -120,11 +120,11 @@ def upload_qr_image(request):
         qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
         return render(request, 'lab/qr/qrgened.html', {'qr_image_url': qr_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
-    print("qr_gen_error")
+    # print("qr_gen_error")
     return render(request, 'lab/qr/qrgen.html')
 
 def songqrgen(request):
-    print("here, songqrgen")
+    # print("here, songqrgen")
     return render(request, 'lab/songqr/songqrgen.html')
 def upload_song_qr_image(request):
     # post = Post.objects.get(pk=post_id)
@@ -133,20 +133,20 @@ def upload_song_qr_image(request):
         color = request.POST.get('song_qr_color')
         background = request.POST.get('song_qr_background')
         p = SongQRPost.objects.create(image=image)
-        print("img saved: ", p.image.path)
+        # print("img saved: ", p.image.path)
         try:
-            print("path is", p.image.path)
+            # print("path is", p.image.path)
             SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
             # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
         except Exception as e:
-            print("error:", type(e).__name__)
+            # print("error:", type(e).__name__)
             return render(request, 'lab/songqr/songqrError.html')
         ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split = ori_image_url.split('.')
         song_qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
         return render(request, 'lab/songqr/songqrgened.html', {'song_qr_image_url': song_qr_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
-    print("song_qr_gen_error")
+    # print("song_qr_gen_error")
     return render(request, 'lab/songqr/songqrgen.html')
 
 

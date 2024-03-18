@@ -29,7 +29,7 @@ class SongRecByAi:
             else:
                 return False
         except requests.ConnectionError:
-            print("error")
+            # print("error")
             return False
 
     def songGen(self):
@@ -42,14 +42,14 @@ class SongRecByAi:
         # info = image.getexif()
         image.close()
 
-        # print(info)
+#         # print(info)
         taglabel = {}
 
         for tag, value in info.items():
             decoded = TAGS.get(tag, tag)
             taglabel[decoded] = value
 
-        # print(taglabel)
+#         # print(taglabel)
 
         data = [taglabel['Make'], taglabel['Model'], taglabel['DateTime'], taglabel['ShutterSpeedValue'],
                 taglabel['ExposureTime'], taglabel['ISOSpeedRatings'], taglabel['FNumber'], taglabel['LensModel']]
@@ -75,14 +75,14 @@ class SongRecByAi:
                     try:
                         response = getResponseChatgpt("gpt-3.5-turbo-0301")
                     except Exception as e3:
-                        print("openai error[1]!!!!!!")
+                        # print("openai error[1]!!!!!!")
                         return ""
             return response
 
 
         response = responseChatgpt()
         answer1 = response.choices[0].message.content
-        print(answer1)
+        # print(answer1)
 
         return answer1
 
@@ -90,4 +90,4 @@ class SongRecByAi:
 # check_link_validity(songUrl)
 # QRGenerator.QRGen("test.jpg",songUrl)
 
-# print(sys.path)
+# # print(sys.path)
