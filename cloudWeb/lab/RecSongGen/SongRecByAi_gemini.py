@@ -12,9 +12,11 @@ from ..QRGen import QRGenerator
 
 
 class SongRecByAi:
-    def __init__(self, path, color):
+    def __init__(self, path, color, background):
         self.path = path
         self.color = color
+        self.background = background
+        print(self.background)
         self.gen()
         # self.qrGen()
 
@@ -22,12 +24,13 @@ class SongRecByAi:
         songTitle = self.songGen()
         songUrl = self.get_video_links(songTitle)
         self.check_link_validity(songUrl)
-        QRGenerator.QRGen(self.path, songUrl, self.color)
+        QRGenerator.QRGen(self.path, songUrl, self.color, self.background)
 
     def check_link_validity(self, url):
         try:
             response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
+                print("checked link validity!")
                 return True
             else:
                 return False
@@ -49,7 +52,6 @@ class SongRecByAi:
 
         response = getResponseGemini()
         response = response.text
-        print(response)
 
         return response
     def get_video_links(self, query):

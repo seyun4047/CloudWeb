@@ -2,7 +2,7 @@ import qrcode
 import cv2
 import numpy as np
 class QRGen:
-    def __init__(self, path, data, qr_color):
+    def __init__(self, path, data, qr_color, qr_background):
         self.img_path = path
         print("img_path Ok")
         self.data = data
@@ -12,6 +12,7 @@ class QRGen:
             self.qr_vcolor=0
         elif self.qr_color==0:
             self.qr_vcolor=255
+        self.qr_background = qr_background
         self.oriImg = cv2.imread(self.img_path)
         print("oriImg OK")
         self.img = self.oriImg.copy()
@@ -35,7 +36,7 @@ class QRGen:
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,
             box_size=10,
-            border=4,
+            border=1,
         )
         qr.add_data(self.data)
         qr.make(fit=True)
@@ -47,20 +48,21 @@ class QRGen:
         # Pillow 이미지로 변환
         self.qrImg = self.qrImg.convert("RGBA")
 
-        mlen = (int(max(self.h, self.w) / 6))
+        mlen = (int(max(self.h, self.w) / 7))
         print(mlen)
         self.qrImg = self.qrImg.resize((mlen, mlen))
+        if self.qr_background==0:
         # 투명 배경 생성
-        datas = self.qrImg.getdata()
-        new_data = []
-        for item in datas:
-            # 흰색 픽셀을 투명하게 처리
-            if item[0]==self.qr_color and item[1]==self.qr_color and item[2]==self.qr_color:
-                new_data.append(item)
-            else:
-                new_data.append((self.qr_vcolor, self.qr_vcolor, self.qr_vcolor, 0))
+            datas = self.qrImg.getdata()
+            new_data = []
+            for item in datas:
+                # 흰색 픽셀을 투명하게 처리
+                if item[0]==self.qr_color and item[1]==self.qr_color and item[2]==self.qr_color:
+                    new_data.append(item)
+                else:
+                    new_data.append((self.qr_vcolor, self.qr_vcolor, self.qr_vcolor, 0))
 
-        self.qrImg.putdata(new_data)
+            self.qrImg.putdata(new_data)
 
     def putQRonImg(self):
         self.qrImg = np.array(self.qrImg)
