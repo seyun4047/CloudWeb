@@ -88,15 +88,18 @@
         font-style: italic;
         {#background-color: black;#}
         position: relative;
+        text-align: center;
         font-weight: bold;
         font-size: 55px;
         color: white;
     }
     .sec1-inttxt{
         margin-top: 100px;
+        line-height: 50px;
         font-style: italic;
         {#background-color: black;#}
         position: relative;
+        text-align: center;
         font-weight: bold;
         font-size: 40px;
         color: white;
@@ -166,6 +169,8 @@
         .sec1-inttxt{
             margin-top: 50px;
             font-size: 20px;
+            line-height: 30px;
+
         }
         #sec-txt {
             font-size: 25px;
@@ -193,6 +198,8 @@
         }
         .sec1-inttxt{
             font-size: 15px;
+            line-height: 19px;
+            background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.5),rgba(0,0,0,0.9), rgba(0,0,0,1));
         }
         #sec-txt {
             font-size: 20px;
@@ -226,13 +233,13 @@
 {#        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator By AI</a>#}
         <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}"></a>
         <hr>
-        <div class="sec1-inttxt">Get Recommendations For Songs Match The Photo By AI!</div>
+        <div class="sec1-inttxt">Get Recommendations For Songs<br>Match The Photo By AI!</div>
         <p class="sec1-inttxt-plus">The Song Is Attached To The Photo With A QR CODE!</p>
 {#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
         <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}"></a>
          <hr>
 
-        <div class="sec1-inttxt">Combine Multiple Images To ReCreate Better Photos!!</div>
+        <div class="sec1-inttxt">Combine Multiple Images<br>To ReCreate Better Photos!!</div>
         <p class="sec1-inttxt-plus">You Can Get Better Quality Photos, Or Get Mysterious Photos!</p>
 {#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
         <a class="sec1-btn imgstack-btn" href="{% url 'lab:imgstack' %}"></a>
