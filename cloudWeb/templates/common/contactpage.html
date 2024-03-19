@@ -1,18 +1,66 @@
 {% extends 'common/base.html' %}
 <title>{% block head_title%}MUTZIN CONTACT{% endblock %}</title>
 {% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-    #conTxt{
+    #sec-txt{
         font-weight: bold;
         font-size: 5vw;
         color: white;
-        position: absolute;
-        top: 28vh;
+        position: relative;
+    }
+    #link_icon {
+        margin-top: 10px;
+        color: white;
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 50px;
+        text-decoration: none;
+    }
+    #conTxt{
+        font-weight: bold;
+        font-size: 2vw;
+        color: white;
+        position: relative;
         z-index: 1;
         text-align: center;
     }
+
+    #cvImg{
+        position: relative;
+        margin-top: 2vh;
+        padding: 100px 150px;
+        color: #fff;
+        z-index: 1;
+        text-decoration: none;
+        background-size: cover;
+        background-position: center;
+        background-image: url('/static/main/cv.jpeg');
+    }
+    #cvImg:hover{
+        background-image: url('/static/main/cv.gif');
+    }
+    hr {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        background-color: whitesmoke;
+        width: 70%;
+        height: 2px;
+        z-index: 3;
+        {#border: 1px solid white; /* 테두리 추가 */#}
+    }
     </style>
     <body>
+     <div id="sec-txt">I am</div>
+    <a id="cvImg" onclick="cvImg()"></a>
+     <hr>
     <div id="conTxt">contact me<br>MUTZIN@mutzin.site</div>
-    </body>
+     <div class="row">
+    <a id="link_icon" href="https://github.com/seyun4047" class="fa fa-github" > </a>
+     <a id="link_icon" href="https://www.instagram.com/mutzin_frame/" class="fa fa-instagram"> </a>
+         </div>
+        <hr>
+
 {% endblock %}

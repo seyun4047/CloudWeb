@@ -2,8 +2,8 @@
 <title>{% block head_title%}MUTZIN{% endblock %}</title>
     <style>
     hr {
-        margin-top: 5vh;
-        margin-bottom: 5vh;
+        margin-top: 100px;
+        {#margin-bottom: 1px;#}
         background-color: whitesmoke;
         width: 70%;
         height: 2px;
@@ -30,20 +30,20 @@
         position: static;
         background-color: #0a58ca;
     }
-    #cvImg{
-        position: relative;
-        margin-top: 2vh;
-        padding: 100px 150px;
-        color: #fff;
-        z-index: 1;
-        text-decoration: none;
-        background-size: cover;
-        background-position: center;
-        background-image: url('/static/main/cv.jpeg');
-    }
-    #cvImg:hover{
-        background-image: url('/static/main/cv.gif');
-    }
+    {##cvImg{#}
+    {#    position: relative;#}
+    {#    margin-top: 2vh;#}
+    {#    padding: 100px 150px;#}
+    {#    color: #fff;#}
+    {#    z-index: 1;#}
+    {#    text-decoration: none;#}
+    {#    background-size: cover;#}
+    {#    background-position: center;#}
+    {#    background-image: url('/static/main/cv.jpeg');#}
+    {#}#}
+    {##cvImg:hover{#}
+    {#    background-image: url('/static/main/cv.gif');#}
+    {#}#}
     .shortcutBtns{
         width:100%;
         height:10vh;
@@ -56,7 +56,7 @@
     }
     .scBtn {
         font-weight: bold;
-        font-size: 1vw;
+        font-size: 20px;
         color: white;
         display: none; /* Flexbox 사용 */
         align-items: center; /* 수직 중앙 정렬 */
@@ -64,8 +64,8 @@
         margin-right: 3vw;
         margin-left: 3vw;
         text-align: center;
-        width: 7vw;
-        height: 7vw;
+        width: 150px;
+        height: 150px;
     }
     .shortcutBtns:hover .scBtn {
         display: flex;
@@ -81,44 +81,51 @@
         align-items: center;
         flex-direction: column;
         z-index: 1;
+        background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.99), rgba(0,0,0,0.98),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1)); /* 그라디언트를 이용하여 위에서 아래로 투명한 배경을 만듭니다. */
     }
     #sec-txt{
         margin-top: 5vh;
         font-style: italic;
-        background-color: black;
+        {#background-color: black;#}
         position: relative;
         font-weight: bold;
-        font-size: 3vw;
+        font-size: 55px;
         color: white;
     }
     .sec1-inttxt{
-        margin-top: 5vh;
+        margin-top: 100px;
         font-style: italic;
-        background-color: black;
+        {#background-color: black;#}
         position: relative;
         font-weight: bold;
-        font-size: 2vw;
+        font-size: 40px;
         color: white;
+        z-index: 2;
+        background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.5),rgba(0,0,0,0.9),rgba(0,0,0,1)); /* 그라디언트를 이용하여 위에서 아래로 투명한 배경을 만듭니다. */
     }
     .sec1-inttxt-plus{
         margin-top: 1vh;
         font-style: italic;
-        background-color: black;
+        {#background-color: black;#}
         position: relative;
         font-weight: bold;
-        font-size: 1.5vw;
+        font-size: 30px;
         color: white;
+        z-index: 2;
     }
     .sec1-btn {
         position: relative;
-        margin-top: 2vw;
-        padding: 100px 150px;
-        min-height: 10vh;
+        margin-top: -100px;
+        {#padding: 150px 150px;#}
+        {#min-height: 10vh;#}
+        width: 600px;
+        height: 400px;
         color: #fff;
         z-index: 1;
         text-decoration: none;
         background-size: cover;
         background-position: center;
+        z-index: 1;
     }
     .filmgen-btn {
         background-image: url('/static/lab/filmbtn.jpg');
@@ -127,7 +134,13 @@
         background-image: url('/static/lab/film.gif');
     }
     .songqrgen-btn {
-
+        background-image: url('/static/lab/songqrbtn.jpg');
+    }
+    .songqrgen-btn:hover {
+        background-image: url('/static/lab/songqr.gif');
+    }
+    .imgstack-btn {
+        background-image: url('/static/lab/stackbtn.jpg');
     }
     .smBtn {
         margin-top: 5vw;
@@ -136,17 +149,63 @@
         background-color: black;
         position: relative;
         width: 100%;
-        {#height: 105vh;#}
+        height: 50vh;
         min-heigt: 50vw;
         display: flex;
         align-items: center;
         flex-direction: column;
         z-index: 1;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1100px) {
         #welcomeText {
             top: 25vw;
         }
+        .sec1-inttxt-plus{
+            font-size: 15px;
+        }
+        .sec1-inttxt{
+            margin-top: 50px;
+            font-size: 20px;
+        }
+        #sec-txt {
+            font-size: 25px;
+            margin-top: 50px;
+        }
+        .sec1-btn {
+            margin-top: -70px;
+        }
+        .sec1-btn {
+            width: 300px;
+            height: 200px;
+        }
+        .shortcutBtns .scBtn {
+            display: flex;
+        }
+        .scBtn {
+            font-size: 15px;
+            width: 90px;
+            height: 90px;
+        }
+    }
+    @media (max-width: 700px) {
+        .sec1-inttxt-plus{
+            font-size: 10px;
+        }
+        .sec1-inttxt{
+            font-size: 15px;
+        }
+        #sec-txt {
+            font-size: 20px;
+        }
+        .sec1-btn {
+            margin-top: -60px;
+        }
+        .scBtn {
+            font-size: 9px;
+            width: 70px;
+            height: 70px;
+        }
+
     }
 </style>
 
@@ -155,26 +214,37 @@
     <div id="welcomeText">Welcome to MUTZIN STUDIO!</div>
 {#    <div id="bnk1"></div>#}
     <div class="shortcutBtns" onclick="showSCBtns()">
-        <a class="btn btn-outline-light scBtn" href="{% url 'lab:lab' %}">CV</a>
-        <a class="btn btn-outline-light scBtn" href="{% url 'gallery' %}">GALLERY</a>
+{#        <p class="scOpenBtn">open</p>#}
+        <a class="btn btn-outline-light scBtn" href="{% url 'common:contact' %}">CONTACT</a>
         <a class="btn btn-outline-light scBtn" href="{% url 'lab:lab' %}">LAB</a>
+        <a class="btn btn-outline-light scBtn" href="{% url 'gallery' %}">GALLERY</a>
     </div>
     <div class="section1">
         <div id="sec-txt">Try a variety of photo conversion modules!</div>
-        <div class="sec1-inttxt">Create Image to Filmtic Photo By AI</div>
-        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator By AI</a>
+        <div class="sec1-inttxt">ReCreate Your Image to Filmtic Photo By AI!</div>
+        <p class="sec1-inttxt-plus">Feel The Retro Sensibility Through Recreated Photos!</p>
+{#        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator By AI</a>#}
+        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}"></a>
         <hr>
-        <div class="sec1-inttxt">Get Recommendations For Songs Match The Photo!</div>
-        <p class="sec1-inttxt-plus">The Song Is Attached To The Photo With A QR CODE</p>
-        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>
+        <div class="sec1-inttxt">Get Recommendations For Songs Match The Photo By AI!</div>
+        <p class="sec1-inttxt-plus">The Song Is Attached To The Photo With A QR CODE!</p>
+{#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
+        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}"></a>
+         <hr>
+
+        <div class="sec1-inttxt">Combine Multiple Images To ReCreate Better Photos!!</div>
+        <p class="sec1-inttxt-plus">You Can Get Better Quality Photos, Or Get Mysterious Photos!</p>
+{#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
+        <a class="sec1-btn imgstack-btn" href="{% url 'lab:imgstack' %}"></a>
+
         <a class="btn btn-outline-light smBtn" href="/lab">SHOW MORE</a>
     </div>
     <div class="section2">
-    <hr>
-        <div id="sec-txt">I am</div>
+
+{#        <div id="sec-txt">I am</div>#}
         <a id="cvImg" onclick="cvImg()"></a>
     </div>
-    <hr>
+{#    <hr>#}
 </body>
 <script>
         function revealAndEraseText(element, delay) {
@@ -224,7 +294,9 @@
     };
 
     function showSCBtns() {
+        {#var scOpenBtn = document.getElementsByClassName('scOpenBtn');#}
         var scBtns = document.getElementsByClassName('scBtn');
+        {#scOpenBtn.style.display = 'block';#}
         for (var i = 0; i < scBtns.length; i++) {
             scBtns[i].style.display = 'flex';
         }

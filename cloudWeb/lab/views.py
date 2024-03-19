@@ -90,7 +90,7 @@ def upload_ImgStacker_image(request):
         else:
             generated_path_split = postedImgLst[0].image.url.split('.')
             generated_path = generated_path_split[0] + "_gen." + generated_path_split[1]
-            return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[1].image.url, 'pk':postedImgLst[1].pk})
+            return render(request, 'lab/stacker/stacked.html', {'stacked_image_url': generated_path, 'stacked_ori_image_url': postedImgLst[0].image.url, 'pk':postedImgLst[0].pk})
     # print("stacked error")
     return render(request, 'lab/stacker/stackError.html')
 def qrgen(request):
