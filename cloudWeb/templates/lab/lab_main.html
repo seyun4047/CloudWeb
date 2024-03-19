@@ -41,6 +41,7 @@
         position: relative;
         font-weight: bold;
         font-size: 40px;
+        text-align: center;
         color: white;
         z-index: 2;
         background: linear-gradient(to top, rgba(0,0,0,0), rgba(0,0,0,0.5),rgba(0,0,0,0.9),rgba(0,0,0,1)); /* 그라디언트를 이용하여 위에서 아래로 투명한 배경을 만듭니다. */
@@ -91,37 +92,53 @@
         background-image: url('/static/lab/songqr.gif');
     }
 
-        @media (max-width: 1100px) {
+@media (max-width: 1100px) {
         #welcomeText {
             top: 25vw;
         }
         .sec1-inttxt-plus{
+            margin-top: 5px;
             font-size: 15px;
         }
         .sec1-inttxt{
+            margin-top: 50px;
             font-size: 20px;
+            line-height: 30px;
+
         }
         #sec-txt {
             font-size: 25px;
+            margin-top: 50px;
         }
         .sec1-btn {
-            margin-top: -70px;
-        }
-        .sec1-btn {
-            width: 300px;
+            margin-top: -50px;
+             width: 300px;
             height: 200px;
+        }
+        .shortcutBtns .scBtn {
+            display: flex;
         }
     }
     @media (max-width: 700px) {
-        .sec1-inttxt-plus{
+        .sec1-inttxt-plus {
+            margin-top: 10px;
             font-size: 10px;
         }
-        .sec1-inttxt{
-            font-size: 15px;
+
+        .sec1-btn {
+            margin-top: 10px;
         }
+
+        .sec1-inttxt {
+            font-size: 15px;
+            line-height: 19px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 1));
+        }
+
         #sec-txt {
             font-size: 20px;
         }
+
         .sec1-btn {
             margin-top: -60px;
         }
@@ -136,12 +153,12 @@
 {#        <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}">Film Generator By AI</a>#}
         <a class="sec1-btn filmgen-btn" href="{% url 'lab:filmgen' %}"></a>
         <hr>
-        <div class="sec1-inttxt">Get Recommendations For Songs Match The Photo By AI!</div>
+        <div class="sec1-inttxt">Get Recommendations For Songs<br>Match The Photo By AI!</div>
         <p class="sec1-inttxt-plus">The Song Is Attached To The Photo With A QR CODE!</p>
 {#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
         <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}"></a>
         <hr>
-        <div class="sec1-inttxt">Combine Multiple Images To ReCreate Better Photos!!</div>
+        <div class="sec1-inttxt">Combine Multiple Images<br>To ReCreate Better Photos!!</div>
         <p class="sec1-inttxt-plus">You Can Get Better Quality Photos, Or Get Mysterious Photos!</p>
 {#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
         <a class="sec1-btn imgstack-btn" href="{% url 'lab:imgstack' %}"></a>
