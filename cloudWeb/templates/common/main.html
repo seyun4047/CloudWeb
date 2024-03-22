@@ -271,13 +271,13 @@
 </body>
 <script>
         function revealAndEraseText(element, delay) {
-            var text = element.innerHTML;
+            let text = element.innerHTML;
             element.innerHTML = '';
-            var length = text.length;
-            var i = 0;
+            let length = text.length;
+            let i = 0;
             let onText = ''
             let delText = ''
-            var t=100;
+            let t=100;
             // 글자를 나타내는 함수
             function reveal() {
                 if (i <= length) {
@@ -292,7 +292,7 @@
             }
             function erase() {
                 if (i >= 0) {
-                    var newText = text.substring(0, i);
+                    let newText = text.substring(0, i);
                     element.innerHTML = newText + '|';
                     i-=2;
                     setTimeout(erase, delay);
@@ -306,26 +306,26 @@
             reveal();
     }
     window.onload = function() {
-        var delay = 100; // 각 글자가 나타나거나 지워지는 시간 간격 (밀리초)
-        var textElement = document.getElementById('welcomeText');
+        let delay = 100; // 각 글자가 나타나거나 지워지는 시간 간격 (밀리초)
+        let textElement = document.getElementById('welcomeText');
         revealAndEraseText(textElement, delay);
-                var bnkSize = document.getElementById('bnk1');
-        var mainImgSize = document.getElementById('mainImg');
+                let bnkSize = document.getElementById('bnk1');
+        let mainImgSize = document.getElementById('mainImg');
         bnkSize.style.height = mainImgSize.height + 'px';
         bnkSize.style.width = mainImgSize.width + 'px';
 
     };
 
     function showSCBtns() {
-        {#var scOpenBtn = document.getElementsByClassName('scOpenBtn');#}
-        var scBtns = document.getElementsByClassName('scBtn');
+        {#let scOpenBtn = document.getElementsByClassName('scOpenBtn');#}
+        let scBtns = document.getElementsByClassName('scBtn');
         {#scOpenBtn.style.display = 'block';#}
-        for (var i = 0; i < scBtns.length; i++) {
+        for (let i = 0; i < scBtns.length; i++) {
             scBtns[i].style.display = 'flex';
         }
     }
     function cvImg() {
-        var cvImg = document.getElementById('cvImg');
+        let cvImg = document.getElementById('cvImg');
         cvImg.style.backgroundImage = "url('/static/main/cv.gif')";
     }
 </script>
