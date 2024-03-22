@@ -135,6 +135,8 @@ cloudWeb/cloud/settings.py
 cloudWeb/media/
 #cloudWeb/templates/
 cloudWeb/templates/common/ads.html
+cloudWeb/templates/common/google_analytics.html
+
 
 # Spyder project settings
 .spyderproject
