@@ -75,8 +75,9 @@ class QRGen:
 
             # qrImg = cv2.cvtColor(self.qrImg, cv2.COLOR_BGRA2BGR)
             # qrh, qrw = qrImg.shape[:2]
-            roi = self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10]
-
+            # roi = self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10]
+            roi = self.img[self.h - qrh - 30:self.h - 30, 30:30+qrw]
+            
             masked_qrImg = cv2.bitwise_and(qrImg, qrImg, mask=mask)
             masked_img = cv2.bitwise_and(roi, roi, mask=mask_inv)
 
