@@ -48,7 +48,7 @@ class QRGen:
         # Pillow 이미지로 변환
         self.qrImg = self.qrImg.convert("RGBA")
 
-        mlen = (int(max(self.h, self.w) / 7))
+        mlen = (int(max(self.h, self.w) / 15))
         # print(mlen)
         self.qrImg = self.qrImg.resize((mlen, mlen))
         if int(self.qr_background)==0:
