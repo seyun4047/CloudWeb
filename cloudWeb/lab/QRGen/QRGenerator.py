@@ -81,9 +81,11 @@ class QRGen:
             masked_img = cv2.bitwise_and(roi, roi, mask=mask_inv)
 
             added = masked_qrImg + masked_img
-            self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = added
+            # self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = added
+            self.img[self.h - qrh - 30:self.h - 30, 30:30+qrw] = added
         else:
-            self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = qrImg
+            # self.img[self.h - qrh - 10:self.h - 10, self.w - qrw - 10:self.w - 10] = qrImg
+            self.img[self.h - qrh - 30:self.h - 30, 30:30 + qrw] = qrImg
         # 합성된 이미지 저장
         # cv2.imwrite('img_gen.jpeg', self.img)
 
