@@ -52,8 +52,8 @@ class SongRecByAi:
         return response
 
     def get_video_links(self, query):
-        cid = '67091324c1a540739abf2790157d6cfa'
-        secret = '39a1fefc641f48359f30cadb9b663661'
+        cid = os.getenv('SPOTIFY_CID')
+        secret = os.getenv('SPOTIFY_SECRET')
         redirect_uri = 'http://localhost:8080/callback'
         sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid, client_secret=secret, redirect_uri=redirect_uri))
         result = sp.search(query, limit=1, type='album')
