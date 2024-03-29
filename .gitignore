@@ -136,7 +136,7 @@ cloudWeb/media/
 #cloudWeb/templates/
 cloudWeb/templates/common/ads.html
 cloudWeb/templates/common/google_analytics.html
-cloudWeb/lab/SongRecByAi_gemini_spotify.py
+#cloudWeb/lab/SongRecByAi_gemini_spotify.py
 
 
 # Spyder project settings
