@@ -5,7 +5,8 @@ import sys
 import google.generativeai as genai
 from googleapiclient.discovery import build
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+# from spotipy.oauth2 import SpotifyOAuth
+from spotipy.oauth2 import SpotifyClientCredentials
 # import pprint
 
 sys.path.append("../")
@@ -54,7 +55,8 @@ class SongRecByAi:
         cid = os.getenv('SPOTIFY_CID')
         secret = os.getenv('SPOTIFY_SECRET')
         redirect_uri = 'http://mutzin.site/lab/songqrup/callback'
-        sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=cid, client_secret=secret, redirect_uri=redirect_uri))
+        client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
+        sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
         result = sp.search(query, limit=1, type='album')
         # pprint.pprint(result)
         print(result['albums']['items'][0]['external_urls']['spotify'])  # 첫번째 앨범 반환
