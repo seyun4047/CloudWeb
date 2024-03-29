@@ -6,7 +6,7 @@ import google.generativeai as genai
 from googleapiclient.discovery import build
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import pprint
+# import pprint
 
 sys.path.append("../")
 from ..QRGen import QRGenerator
