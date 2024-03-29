@@ -11,7 +11,7 @@ from .QRGen import QRGenerator
 from .ImgStacker import ImgStacker
 # from .RecSongGen import SongRecByAi_chatgpt
 # from .RecSongGen import SongRecByAi_gemini
-from .RecSongGen import SongRecByAi_gemini_spotify
+from .RecSongGen import songRecByAi_gemini_spotify
 
 # Create your views here.
 def main(request):
