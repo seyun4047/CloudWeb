@@ -13,27 +13,29 @@ from ..QRGen import QRGenerator
 
 
 class SongRecByAi:
-    def __init__(self, path):
+    def __init__(self, path, color, background):
         self.path = path
+        self.color = color
+        self.background = background
         self.gen()
 
     def gen(self):
         songTitle = self.songGen()
-        songUrl = self.get_video_links(songTitle)
-        self.check_link_validity(songUrl)
-        QRGenerator.QRGen(self.path, songUrl)
+        self.songUrl = self.get_video_links(songTitle)
+        self.check_link_validity(self.songUrl)
+        QRGenerator.QRGen(self.path, self.songUrl, self.color, self.background)
 
     def check_link_validity(self, url):
         try:
             response = requests.head(url, allow_redirects=True)
             if response.status_code == 200:
+                # print("checked link validity!")
                 return True
             else:
                 return False
         except requests.ConnectionError:
-            print("error")
+            # print("error")
             return False
-
     def songGen(self):
         GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
         image = cv2.imread(self.path)
