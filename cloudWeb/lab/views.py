@@ -135,24 +135,20 @@ def upload_song_qr_image(request):
         background = request.POST.get('song_qr_background')
         p = SongQRPost.objects.create(image=image)
         # print("img saved: ", p.image.path)
-        # try:
-        #     # print("path is", p.image.path)
-        #     songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
-        #     # songRec = SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
-        #     songUrl = songRec.songUrl
-        #     print(songUrl)
-        #     # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
-        # except Exception as e:
-        #     # print("error:", type(e).__name__)
-        #     return render(request, 'lab/songqr/songqrError.html')
-        # 111111111111111
-        # print("path is", p.image.path)
-        songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
-        # songRec = SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
-        songUrl = songRec.songUrl
-        print(songUrl)
-        # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
-        # 111111111111111
+        try:
+            songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
+            songUrl = songRec.songUrl
+        except Exception as e:
+            try:
+                songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
+                songUrl = songRec.songUrl
+            except Exception as e:
+                try:
+                    songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
+                    songUrl = songRec.songUrl
+                except Exception as e:
+                    # print("error:", type(e).__name__)
+                    return render(request, 'lab/songqr/songqrError.html')
         ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split = ori_image_url.split('.')
         song_qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
