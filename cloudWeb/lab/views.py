@@ -10,7 +10,8 @@ from .FilmGen import FilmGen2
 from .QRGen import QRGenerator
 from .ImgStacker import ImgStacker
 # from .RecSongGen import SongRecByAi_chatgpt
-from .RecSongGen import SongRecByAi_gemini
+# from .RecSongGen import SongRecByAi_gemini
+from .RecSongGen import SongRecByAi_gemini_spotify
 
 # Create your views here.
 def main(request):
@@ -136,7 +137,7 @@ def upload_song_qr_image(request):
         # print("img saved: ", p.image.path)
         try:
             # print("path is", p.image.path)
-            songRec = SongRecByAi_gemini.SongRecByAi(p.image.path, color, background)
+            songRec = SongRecByAi_gemini_spotify.SongRecByAi(p.image.path, color, background)
             songUrl = songRec.songUrl
             print(songUrl)
             # SongRecByAi_chatgpt.SongRecByAi(p.image.path)
