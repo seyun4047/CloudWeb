@@ -15,7 +15,7 @@ def gen(imgSrc):
     image = cv2.imread(imgSrc)
 
     # value 범위 설정
-    exV = [-20,20] # can -255-255
+    exV = [-7,20] # can -255-255
     crV = [-5,5]
     cbV = [-5,5]
     coV = [7,10]
