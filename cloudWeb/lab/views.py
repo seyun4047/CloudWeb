@@ -6,7 +6,8 @@ from .models import Post, ImgStackerPost, QRPost, SongQRPost
 from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
-from .FilmGen import FilmGen2
+# from .FilmGen import FilmGen2
+from .FilmGen import FilmGen3
 from .QRGen import QRGenerator
 from .ImgStacker import ImgStacker
 # from .RecSongGen import SongRecByAi_chatgpt
@@ -57,7 +58,7 @@ def upload_film_image(request):
         # print("img saved: ", p.image.path)
         #filmgen
         try:
-            FilmGen2.gen(p.image.path)
+            FilmGen3.gen(p.image.path)
         except Exception:
             return render(request, 'lab/film/filmError.html')
         # FilmGen.gen(p.get_img_src())
