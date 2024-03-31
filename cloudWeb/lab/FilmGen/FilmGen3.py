@@ -10,7 +10,7 @@ def string_to_list(input_string):
     s = re.findall(r'[-+]?\d*\.\d+|[-+]?\d+', input_string)
     return [float(num) for num in s]
 
-def gen(imgSrc, fgH, fgW):
+def gen(imgSrc):
     GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
     image = cv2.imread(imgSrc)
 
@@ -29,7 +29,7 @@ def gen(imgSrc, fgH, fgW):
     # 1차
     # img_path = "test1.jpeg"
     img_path = imgSrc
-    c = ColorGen2.ColorOp(img_path, fgH, fgW)
+    c = ColorGen2.ColorOp(img_path)
     img = c.getImg()
 
     # [Exposure, Cr, Cb, Contrast, Grain]
@@ -40,7 +40,7 @@ def gen(imgSrc, fgH, fgW):
             response = model.generate_content(
                 f"You are a famous film photographer. {ranges}{baseInfo}{answerform} Do not exceed the specified number range. especially Brightness. {img}")
         except Exception as e3:
-            # print("gemini error[1]!!!!!!")
+            print("gemini error[1]!!!!!!")
             return ""
 
         return response
@@ -72,3 +72,4 @@ def gen(imgSrc, fgH, fgW):
     # print(answer2, "\n")
     fixed2 = c.getFilmImg(int(answer2[0]),int(answer2[1]),int(answer2[2]),float(answer2[3]),float(answer2[4]))
     return fixed2
+# gen("test.jpeg")
