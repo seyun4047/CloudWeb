@@ -1,0 +1,18 @@
+{% extends 'common/base.html' %}
+<title>{% block head_title%}MUTZIN LAB-NCUTS{% endblock %}</title>
+{% block content %}
+<h1>감성영역을 경험하세요</h1>
+    <img src="{{ nCutsGened_image_url }}" alt="N-Cuts-Photo" style="max-width: 30vw; height: auto;">
+    <h1></h1>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="{% url 'lab:download_image' pk=pk n=5 %}">download</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-outline-light smBtn" href="/lab/ncutsgen">N-Cuts Gen</a>
+        </div>
+    </div>
+    <div class="col">
+            <a class="btn btn-outline-light smBtn" href="{{ songUrl }}">Song</a>
+    </div>
+{% endblock %}

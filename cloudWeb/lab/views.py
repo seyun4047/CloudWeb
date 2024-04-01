@@ -2,7 +2,7 @@ import os
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post, ImgStackerPost, QRPost, SongQRPost
+from .models import Post, ImgStackerPost, QRPost, SongQRPost, NCutsPost
 from .forms import PostForm
 import requests
 from .FilmGen import FilmGen
@@ -13,6 +13,7 @@ from .ImgStacker import ImgStacker
 # from .RecSongGen import SongRecByAi_chatgpt
 from .RecSongGen import SongRecByAi_gemini
 from .RecSongGen import SongRecByAi_gemini_spotify
+from .NCutsGen import NCutsGen
 
 # Create your views here.
 def main(request):
@@ -97,7 +98,7 @@ def upload_ImgStacker_image(request):
     return render(request, 'lab/stacker/stackError.html')
 def qrgen(request):
     # print("here, qrgen")
-    return render(request, 'lab/qr/qrgen.html')
+    return render(request, 'lab/qr/nCutsGen.html')
 def upload_qr_image(request):
     # post = Post.objects.get(pk=post_id)
     if request.method == 'POST' and request.FILES.get('qr_image'):
@@ -115,15 +116,15 @@ def upload_qr_image(request):
             QRGenerator.QRGen(p.image.path, p.content, color, background)
         except Exception as e:
             # print("error:", type(e).__name__)
-            return render(request, 'lab/qr/qrError.html')
+            return render(request, 'lab/qr/nCutsGenError.html')
 
         qr_ori_image_url = p.image.url  # 이미지의 URL을 가져옴
         ori_url_split = qr_ori_image_url.split('.')
         qr_image_url = ori_url_split[0] + "_gen." + ori_url_split[1]
-        return render(request, 'lab/qr/qrgened.html', {'qr_image_url': qr_image_url, 'pk':p.pk})
+        return render(request, 'lab/qr/nCutsGened.html', {'qr_image_url': qr_image_url, 'pk':p.pk})
         # return render(request, 'lab/film/filmgened.html')
     # print("qr_gen_error")
-    return render(request, 'lab/qr/qrgen.html')
+    return render(request, 'lab/qr/nCutsGen.html')
 
 def songqrgen(request):
     # print("here, songqrgen")
@@ -159,6 +160,45 @@ def upload_song_qr_image(request):
     return render(request, 'lab/songqr/songqrgen.html')
 
 
+def ncutsgen(request):
+    # print("here, ncutsgen")
+    return render(request, 'lab/ncuts/nCutsGen.html')
+def upload_ncuts_image(request):
+    if request.method == "POST" and request.FILES.getlist('ncuts_images'):
+        color = request.POST.get('ncuts_qr_color')
+        background = request.POST.get('ncuts_qr_background')
+        imgs = request.FILES.getlist('ncuts_images')
+        postedImgLst = list()
+        for img in imgs:
+            postedImgLst.append(NCutsPost.objects.create(image=img))
+        # print("posted")
+        # #
+        # gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.path, postedImgLst[1].image.path,
+        #                         postedImgLst[2].image.path, postedImgLst[3].image.path)
+        # print("gened")
+        # songUrl = gen.songUrl
+        # print(songUrl)
+        # #
+        try:
+            gen = NCutsGen.NCutsGen(color,background,postedImgLst[0].image.path,postedImgLst[1].image.path,postedImgLst[2].image.path,postedImgLst[3].image.path)
+            songUrl = gen.songUrl
+        except Exception as e:
+            try:
+                gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
+                                        postedImgLst[2].image.path, postedImgLst[3].image.path)
+                songUrl = gen.songUrl
+            except Exception as e:
+                try:
+                    gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
+                                            postedImgLst[2].image.path, postedImgLst[3].image.path)
+                    songUrl = gen.songUrl
+                except Exception as e:
+                    return render(request, 'lab/ncuts/nCutsGenError.html')
+        generated_path_split = postedImgLst[0].image.url.split('.')
+        generated_path = generated_path_split[0] + "_gen." + generated_path_split[1]
+        return render(request, 'lab/ncuts/nCutsGened.html', {'nCutsGened_image_url': generated_path, 'pk':postedImgLst[0].pk, 'songUrl':songUrl}, )
+    # print("stacked error")
+    return render(request, 'lab/ncuts/nCutsGenError.html')
 def download_image(request, pk, n):
     if n == 1:
         p = Post
@@ -168,7 +208,8 @@ def download_image(request, pk, n):
         p = QRPost
     elif n == 4:
         p = SongQRPost
-
+    elif n == 5:
+        p = NCutsPost
     # 해당 모델 객체를 가져옵니다.
     file_obj = get_object_or_404(p, pk=pk)
 

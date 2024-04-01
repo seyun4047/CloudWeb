@@ -1,0 +1,21 @@
+{% extends 'common/base.html' %}
+<title>{% block head_title%}MUTZIN LAB-QR{% endblock %}</title>
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10 col-lg-8">
+            <div class="card border-white">
+                <div class="card-header bg-black text-white text-center">
+                    <h1>N-CUTS generator</h1>
+                </div>
+                <div class="card-body">
+                    <p class="text-center">Please upload an image file with the extensions ".jpg", ".jpeg", or ".JPG".</p>
+                    <div class="text-center">
+                        {% include 'lab/ncuts/form.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

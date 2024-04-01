@@ -10,10 +10,12 @@ def string_to_list(input_string):
     s = re.findall(r'[-+]?\d*\.\d+|[-+]?\d+', input_string)
     return [float(num) for num in s]
 
-def gen(imgSrc):
+def gen(imgSrc, isNC=0, NCW=0, NCH=0):
     GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
     image = cv2.imread(imgSrc)
-
+    if isNC==1:
+        image = cv2.resize(image, (NCW, NCH), interpolation=cv2.INTER_AREA)
+        cv2.imwrite(imgSrc, image)
     # value 범위 설정
     exV = [-7,20] # can -255-255
     crV = [-5,5]

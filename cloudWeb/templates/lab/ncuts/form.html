@@ -1,0 +1,102 @@
+<title>{% block head_title%}SEYUN's world{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        /* 버튼 스타일 */
+        button[type="submit"] {
+            background-color: gray;
+            color: white;
+            border: none;
+            padding: 8px 16px; /* 버튼 내부 여백을 줄임 */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: black;
+        }
+
+        /* 파일 선택 창 스타일 */
+        input[type="file"] {
+            display: none; /* 실제 파일 입력 필드를 숨김 */
+        }
+
+        .custom-file-upload {
+            border: 3px solid #ccc; /* 파일 선택 창의 외곽선 추가 */
+            display: inline-block;
+            padding: 6px 12px; /* 파일 선택 창의 내부 여백 조정 */
+            cursor: pointer;
+        }
+
+        /* 모바일 화면 크기에서 파일 선택 창 크기 줄임 */
+        @media only screen and (max-width: 600px) {
+            .custom-file-upload {
+                padding: 4px 8px; /* 파일 선택 창의 내부 여백을 더 줄임 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="/lab/ncutsup/">
+        {% csrf_token %}
+        <!-- 실제 파일 선택 창 대신 라벨을 클릭하면 파일 선택 창이 열림 -->
+        <label for="ncuts_images" class="custom-file-upload">Choose Image</label>
+        <input type="file" name="ncuts_images" id="ncuts_images" accept=".jpg, .jpeg, .JPG" multiple onchange="updateFileName(this)">
+        <span id="selectedFileName"></span> <!-- 파일 이름을 표시할 레이블 -->
+{#        <hr>#}
+        <h1></h1>
+        <hr>
+        <h3>QR CODE COLOR</h3>
+        <input class="" type="radio" name="ncuts_qr_color" value="0" id="ncuts_qr_color_w" class="form-control checked">
+        <label for="ncuts_qr_color_w">BLACK</label>
+        <input class="" type="radio" name="ncuts_qr_color" value="255" id="ncuts_qr_color_b" class="form-control">
+        <label for="ncuts_qr_color_b">WHITE</label>
+        <hr>
+        <h3>QR CODE BACKGROUND</h3>
+        <input class="" type="radio" name="ncuts_qr_background" value="1" id="ncuts_qr_background_o" class="form-controls">
+        <label for="ncuts_qr_background">O</label>
+        <input class="" type="radio" name="ncuts_qr_background" value="0" id="ncuts_qr_background_x" class="form-control checked">
+        <label for="ncuts_qr_background">X</label>
+        <hr>
+        <button type="submit">GENERATE!</button>
+
+    </form>
+
+    <script>
+        // 파일 선택 시 파일 이름을 표시하는 함수
+        function updateFileName(input) {
+            var fileName = input.files[0].name; // 선택한 파일의 이름 가져오기
+            document.getElementById('selectedFileName').innerText = fileName; // 레이블에 파일 이름 표시
+        }
+    </script>
+{#    <script>#}
+{#    const qrColorLeft = document.getElementById('ncuts_qr_color_w');#}
+{#    const qrColorRight = document.getElementById('ncuts_qr_color_b');#}
+{##}
+{#    function getQrColor() {#}
+{#      if (qrColorLeft.checked) {#}
+{#        return 0;#}
+{#      } else if (qrColorRight.checked) {#}
+{#        return 255;#}
+{#      } else {#}
+{#        return null;#}
+{#      }#}
+{#    }#}
+{#    </script>#}
+{#    <script>#}
+{#        const qrBackLeft = document.getElementById('ncuts_qr_background_o');#}
+{#        const qrBackRight = document.getElementById('ncuts_qr_background_x');#}
+{#    #}
+{#        function getQrColor() {#}
+{#          if (qrBackLeft.checked) {#}
+{#            return 0;#}
+{#          } else if (qrBackRight.checked) {#}
+{#            return 1;#}
+{#          } else {#}
+{#            return null;#}
+{#          }#}
+{#        }#}
+{#    </script>#}
+</body>
