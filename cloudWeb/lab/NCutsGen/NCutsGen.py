@@ -8,7 +8,8 @@ from ..FilmGen import FilmGen3
 class NCutsGen:
     def __init__(self,qrC,qrBg,i1,i2,i3,i4):
         print("this")
-        self.imgGenPath = i1.split(".")[0] + "_gen." + i1.split(".")[1]
+        self.imgGenPath = i1
+        # self.imgGenPath = i1.split(".")[0] + "_gen." + i1.split(".")[1]
         #set paper
         # paper size 6:4
         self.bgH = 3000
