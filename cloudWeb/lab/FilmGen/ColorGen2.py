@@ -46,7 +46,7 @@ class ColorOp:
     def writeImg(self):
         # cv2.imwrite(self.img_path, self.img)
         self.new_path=self.img_path.split(".")[0] + "_gen." + self.img_path.split(".")[1]
-        cv2.imwrite(self.new_path,self.img)
+        cv2.imwrite(self.new_path, self.img)
 
     # 노출값 0~255 (가감 필요)
     def setBrightness(self, b):
