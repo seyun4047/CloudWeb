@@ -173,27 +173,27 @@ def upload_ncuts_image(request):
             postedImgLst.append(NCutsPost.objects.create(image=img))
         # print("posted")
         # #
-        gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.path, postedImgLst[1].image.path,
-                                postedImgLst[2].image.path, postedImgLst[3].image.path)
-        print("gened")
-        songUrl = gen.songUrl
-        print(songUrl)
-        #
-        # try:
-        #     gen = NCutsGen.NCutsGen(color,background,postedImgLst[0].image.path,postedImgLst[1].image.path,postedImgLst[2].image.path,postedImgLst[3].image.path)
-        #     nsongUrl = gen.songUrl
-        # except Exception as e:
-        #     try:
-        #         gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
-        #                                 postedImgLst[2].image.path, postedImgLst[3].image.path)
-        #         nsongUrl = gen.songUrl
-        #     except Exception as e:
-        #         try:
-        #             gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
-        #                                     postedImgLst[2].image.path, postedImgLst[3].image.path)
-        #             nsongUrl = gen.songUrl
-        #         except Exception as e:
-        #             return render(request, 'lab/ncuts/nCutsGenError.html')
+        # gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.path, postedImgLst[1].image.path,
+        #                         postedImgLst[2].image.path, postedImgLst[3].image.path)
+        # print("gened")
+        # songUrl = gen.songUrl
+        # print(songUrl)
+        # #
+        try:
+            gen = NCutsGen.NCutsGen(color,background,postedImgLst[0].image.path,postedImgLst[1].image.path,postedImgLst[2].image.path,postedImgLst[3].image.path)
+            nsongUrl = gen.songUrl
+        except Exception as e:
+            try:
+                gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
+                                        postedImgLst[2].image.path, postedImgLst[3].image.path)
+                nsongUrl = gen.songUrl
+            except Exception as e:
+                try:
+                    gen = NCutsGen.NCutsGen(color, background, postedImgLst[0].image.pathpostedImgLst[1].image.path,
+                                            postedImgLst[2].image.path, postedImgLst[3].image.path)
+                    nsongUrl = gen.songUrl
+                except Exception as e:
+                    return render(request, 'lab/ncuts/nCutsGenError.html')
         generated_path_split = postedImgLst[0].image.url.split('.')
         generated_path = generated_path_split[0] + "_gen." + generated_path_split[1]
         return render(request, 'lab/ncuts/nCutsGened.html', {'nCutsGened_image_url': generated_path, 'pk':postedImgLst[0].pk, 'songUrl':nsongUrl}, )
