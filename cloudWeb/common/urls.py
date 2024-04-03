@@ -8,7 +8,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('signup/', views.signup, name='signup'),
     path('contact/', views.contactpage, name='contact'),
-
+    path('ads.txt',views.Ads),
     path('', views.mainpage, name='mainpage'),
 
 ]

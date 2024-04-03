@@ -6,6 +6,11 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from .forms import UserForm
+from . import _ads
+
+def Ads(request):
+    r = _ads.Ads(request)
+    return r
 def logout_view(request):
     logout(request)
     return redirect('/')
