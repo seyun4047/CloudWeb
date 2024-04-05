@@ -43,8 +43,10 @@
         {% csrf_token %}
         <!-- 실제 파일 선택 창 대신 라벨을 클릭하면 파일 선택 창이 열림 -->
         <label for="ncuts_images" class="custom-file-upload">Choose Image</label>
+{#        <input type="file" name="ncuts_images" id="ncuts_images" accept=".jpg, .jpeg, .JPG" multiple onchange="updateFileName(this)">#}
         <input type="file" name="ncuts_images" id="ncuts_images" accept=".jpg, .jpeg, .JPG" multiple onchange="updateFileName(this)">
-        <span id="selectedFileName"></span> <!-- 파일 이름을 표시할 레이블 -->
+        <p id="fileCountWarning" style="display: none; color: red;">최대 4개까지만 선택할 수 있습니다.</p>
+        <span id="selectedFileNames"></span> <!-- 파일 이름을 표시할 레이블 -->
 {#        <hr>#}
         <h1></h1>
         <hr>
@@ -67,8 +69,22 @@
     <script>
         // 파일 선택 시 파일 이름을 표시하는 함수
         function updateFileName(input) {
-            var fileName = input.files[0].name; // 선택한 파일의 이름 가져오기
-            document.getElementById('selectedFileName').innerText = fileName; // 레이블에 파일 이름 표시
+            var fileNames = '';
+            for (var i = 0; i < input.files.length; i++) {
+                fileNames += input.files[i].name + ', ';
+            }
+            // 마지막 쉼표 제거
+            fileNames = fileNames.substring(0, fileNames.length - 2);
+            document.getElementById('selectedFileNames').innerText = fileNames; // 레이블에 파일 이름 표시
+            var files = input.files;
+            var fileCountWarning = document.getElementById("fileCountWarning");
+
+            if (files.length > 4) {
+                fileCountWarning.style.display = "block";
+                input.value = "";
+            } else {
+                fileCountWarning.style.display = "none";
+            }
         }
     </script>
 {#    <script>#}
