@@ -24,23 +24,25 @@ class NCutsGen:
         # self.bgMarginBottomH=400
         # # cross margin
         # self.bonusMargin=150
-        # 4cuts image 4:3
+        # 4cuts image 6:9
         if self.pLstLen==1:
-            self.fgH=2080
-            self.fgW=1560
+            # 6:4
+            self.fgH=2400
+            self.fgW=1600
             # bg margin
-            self.bgMarginTopH = 290
-            self.bgMarginW = 220
+            self.bgMarginTopH = 270
+            self.bgMarginW = 200
             self.bgMarginBottomH = 400
             # cross margin
             # self.bonusMargin = 150
         if self.pLstLen==2:
-            self.fgH=1180
-            self.fgW=1574
+            # 6:9
+            self.fgH=1133
+            self.fgW=1700
             # bg margin
             self.bgMarginTopH = 150
-            self.bgMarginW = 213
-            self.bgMarginBottomH = 400
+            self.bgMarginW = 150
+            self.bgMarginBottomH = 480
             # cross margin
             self.bonusMargin = 150
         if self.pLstLen==3:
@@ -53,11 +55,12 @@ class NCutsGen:
             # cross margin
             self.bonusMargin = 150
         if self.pLstLen==4:
-            self.fgH=1040
-            self.fgW=780
+            # 4:3
+            self.fgH=1080
+            self.fgW=810
             # bg margin
             self.bgMarginTopH = 200
-            self.bgMarginW = 130
+            self.bgMarginW = 150
             self.bgMarginBottomH = 400
             # cross margin
             self.bonusMargin = 150
@@ -73,18 +76,18 @@ class NCutsGen:
                 except Exception as e:
                     print(e)
                     continue
-
+        self.bg = cv2.imread("static/lab/ncuts/bg.jpg")
         if self.pLstLen==1:
-            self.bg=cv2.imread("static/lab/ncuts/bg1.jpg")
+            # self.bg=cv2.imread("static/lab/ncuts/bg1.jpg")
             self.genedImg = self.putImage1()
         elif self.pLstLen == 2:
-            self.bg=cv2.imread("static/lab/ncuts/bg2.jpg")
+            # self.bg=cv2.imread("static/lab/ncuts/bg2.jpg")
             self.genedImg = self.putImage2()
         elif self.pLstLen == 3:
-            self.bg=cv2.imread("static/lab/ncuts/bg3.jpg")
+            # self.bg=cv2.imread("static/lab/ncuts/bg3.jpg")
             self.genedImg = self.putImage3()
         elif self.pLstLen == 4:
-            self.bg=cv2.imread("static/lab/ncuts/bg4.jpg")
+            # self.bg=cv2.imread("static/lab/ncuts/bg4.jpg")
             self.genedImg = self.putImage4()
 
         gen = SongRecByAi_gemini_spotify.SongRecByAi(self.imgGenPath,qrC,qrBg)
