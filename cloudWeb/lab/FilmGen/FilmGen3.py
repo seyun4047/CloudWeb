@@ -14,8 +14,21 @@ def gen(imgSrc, isNC=0, NCW=0, NCH=0):
     GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
     image = cv2.imread(imgSrc)
     if isNC==1:
-        image = cv2.resize(image, (NCW, NCH), interpolation=cv2.INTER_AREA)
-        cv2.imwrite(imgSrc, image)
+        original_height, original_width = image.shape[:2]
+        original_aspect_ratio = original_width / original_height
+        target_aspect_ratio = NCW / NCH
+        if original_aspect_ratio > target_aspect_ratio:
+            new_width = int(NCH * original_aspect_ratio)
+            new_height = NCH
+        else:
+            new_width = NCW
+            new_height = int(NCW / original_aspect_ratio)
+        resized_image = cv2.resize(image, (new_width, new_height))
+        start_x = max(0, int((new_width - NCW) / 2))
+        start_y = max(0, int((new_height - NCH) / 2))
+        cropped_image = resized_image[start_y:start_y + NCH, start_x:start_x + NCW]
+        # image = cv2.resize(image, (NCW, NCH), interpolation=cv2.INTER_AREA)
+        cv2.imwrite(imgSrc, cropped_image)
     # value 범위 설정
     exV = [-7,20] # can -255-255
     crV = [-5,5]
