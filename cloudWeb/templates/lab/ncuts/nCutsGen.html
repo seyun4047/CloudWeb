@@ -1,15 +1,17 @@
 {% extends 'common/base.html' %}
-<title>{% block head_title%}MUTZIN LAB-NCUTS{% endblock %}</title>
+<title>{% block head_title%}MUTZIN LAB-FRAME THE MEMORY{% endblock %}</title>
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-lg-8">
             <div class="card border-white">
                 <div class="card-header bg-black text-white text-center">
-                    <h1>N-CUTS generator</h1>
+                    <h1>Frame The Memory</h1>
                 </div>
                 <div class="card-body">
-                    <p class="text-center">Please upload an image file with the extensions ".jpg", ".jpeg", or ".JPG".</p>
+                    <p class="text-center" style="font-weight: bolder; font-size: larger">"진짜 이순간을 기록한다"<br>Frame The Memory</p>
+                <hr><hr>
+                    <p class="text-center" style="font-weight: bolder">이미지는 ".jpg", ".jpeg", or ".JPG" 만 지원합니다.<br>제공해주신 이미지 갯수대로 프레임은 정해지며, 1, 2, 4컷 중 제공됩니다.</p>
                     <div class="text-center">
                         {% include 'lab/ncuts/form.html' %}
                     </div>

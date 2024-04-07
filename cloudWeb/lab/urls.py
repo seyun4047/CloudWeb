@@ -15,8 +15,10 @@ urlpatterns = [
     path('qrup/', views.upload_qr_image, name='upload_qr_image'),
     path('songqrgen/', views.songqrgen, name='songqrgen'),
     path('songqrup/', views.upload_song_qr_image, name='upload_song_qr_image'),
-    path('ncutsgen/', views.ncutsgen, name='ncutsgen'),
-    path('ncutsup/', views.upload_ncuts_image, name='upload_ncuts_image'),
+    path('framethememory/', views.ncutsgen, name='ncutsgen'),
+    path('framethememoryup/', views.upload_ncuts_image, name='upload_ncuts_image'),
+    # path('ncutsgen/', views.ncutsgen, name='ncutsgen'),
+    # path('ncutsup/', views.upload_ncuts_image, name='upload_ncuts_image'),
     path('download_image/<int:pk>/<int:n>', views.download_image, name='download_image')
 
     # path('logout/', views.logout_view, name='logout'),
