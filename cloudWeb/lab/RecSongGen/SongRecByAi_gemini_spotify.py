@@ -44,7 +44,7 @@ class SongRecByAi:
 #         # print(image)
         def getResponseGemini():
             model = genai.GenerativeModel('gemini-pro')
-            response = model.generate_content(f"I'm going to give the text of the image. You recommend a song by understanding the mood, emotion, environment, time, season, etc. of this text. Songs have priorities of 25% in k-pop, 25% in j-pop, 15% in Taiwanese music, 5% in Hong Kong music, 5% in Chinese music, and 30% in global music. Please tell me the answer as '[mv]song title-singer name' or '[mv]singer name-song title' and K-pop is in Korean, j-pop is in Japanese, China, Taiwan and Hong Kong are in Chinese, and global music is in English. For example, answer like this: [mv]Lilac - IU. Next is the image. {image}")
+            response = model.generate_content(f"I'm going to give the text of the image. You recommend a song by understanding the mood, emotion, environment, time, season, etc. of this text. Songs have priorities of 50% in k-pop, 25% in j-pop, and 25% in global music. Please tell me the answer as '[mv]song title-singer name' or '[mv]singer name-song title' and K-pop is in Korean like 아이유-라일락, J-pop is in Japanese, and global music is in English. For example, answer like this: Lilac - IU. Next is the image. {image}")
             return response
 
         response = getResponseGemini()
