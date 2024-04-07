@@ -165,15 +165,16 @@ def ncutsgen(request):
     return render(request, 'lab/ncuts/nCutsGen.html')
 def upload_ncuts_image(request):
     if request.method == "POST" and request.FILES.getlist('ncuts_images'):
-        color = request.POST.get('ncuts_qr_color')
-        background = request.POST.get('ncuts_qr_background')
+        # color = request.POST.get('ncuts_qr_color')
+        # background = request.POST.get('ncuts_qr_background')
         imgs = request.FILES.getlist('ncuts_images')
         postedImgLst = list()
         for img in imgs:
             postedImgLst.append(NCutsPost.objects.create(image=img))
 
         # 어레이로 넘기기
-        gen = NCutsGen.NCutsGen(color, background, postedImgLst)
+        # gen = NCutsGen.NCutsGen(color, background, postedImgLst)
+        gen = NCutsGen.NCutsGen(255, 1, postedImgLst)
         nsongUrl = gen.songUrl
         # try:
         #     gen = NCutsGen.NCutsGen(color,background,postedImgLst[0].image.path,postedImgLst[1].image.path,postedImgLst[2].image.path,postedImgLst[3].image.path)

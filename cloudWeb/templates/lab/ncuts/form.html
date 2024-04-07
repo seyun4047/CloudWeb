@@ -45,22 +45,22 @@
         <label for="ncuts_images" class="custom-file-upload">Choose Image</label>
 {#        <input type="file" name="ncuts_images" id="ncuts_images" accept=".jpg, .jpeg, .JPG" multiple onchange="updateFileName(this)">#}
         <input type="file" name="ncuts_images" id="ncuts_images" accept=".jpg, .jpeg, .JPG" multiple onchange="updateFileName(this)">
-        <p id="fileCountWarning" style="display: none; color: red;">최대 4개까지만 선택할 수 있습니다.</p>
+        <p id="fileCountWarning" style="display: none; color: red;">사진은 1, 2, 4컷만 지원합니다.</p>
         <span id="selectedFileNames"></span> <!-- 파일 이름을 표시할 레이블 -->
 {#        <hr>#}
         <h1></h1>
         <hr>
-        <h3>QR CODE COLOR</h3>
-        <input class="" type="radio" name="ncuts_qr_color" value="0" id="ncuts_qr_color_w" class="form-control checked">
-        <label for="ncuts_qr_color_w">BLACK</label>
-        <input class="" type="radio" name="ncuts_qr_color" value="255" id="ncuts_qr_color_b" class="form-control">
-        <label for="ncuts_qr_color_b">WHITE</label>
-        <hr>
-        <h3>QR CODE BACKGROUND</h3>
-        <input class="" type="radio" name="ncuts_qr_background" value="1" id="ncuts_qr_background_o" class="form-controls">
-        <label for="ncuts_qr_background">O</label>
-        <input class="" type="radio" name="ncuts_qr_background" value="0" id="ncuts_qr_background_x" class="form-control checked">
-        <label for="ncuts_qr_background">X</label>
+{#        <h3>QR CODE COLOR</h3>#}
+{#        <input class="" type="radio" name="ncuts_qr_color" value="0" id="ncuts_qr_color_w" class="form-control checked">#}
+{#        <label for="ncuts_qr_color_w">BLACK</label>#}
+{#        <input class="" type="radio" name="ncuts_qr_color" value="255" id="ncuts_qr_color_b" class="form-control">#}
+{#        <label for="ncuts_qr_color_b">WHITE</label>#}
+{#        <hr>#}
+{#        <h3>QR CODE BACKGROUND</h3>#}
+{#        <input class="" type="radio" name="ncuts_qr_background" value="1" id="ncuts_qr_background_o" class="form-controls">#}
+{#        <label for="ncuts_qr_background">O</label>#}
+{#        <input class="" type="radio" name="ncuts_qr_background" value="0" id="ncuts_qr_background_x" class="form-control checked">#}
+{#        <label for="ncuts_qr_background">X</label>#}
         <hr>
         <button type="submit">GENERATE!</button>
 
@@ -79,11 +79,11 @@
             var files = input.files;
             var fileCountWarning = document.getElementById("fileCountWarning");
 
-            if (files.length > 4) {
+            if (files.length === 1 || files.length === 2 || files.length === 4) {
+                fileCountWarning.style.display = "none";
+            } else {
                 fileCountWarning.style.display = "block";
                 input.value = "";
-            } else {
-                fileCountWarning.style.display = "none";
             }
         }
     </script>
