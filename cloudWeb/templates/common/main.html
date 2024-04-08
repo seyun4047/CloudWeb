@@ -185,8 +185,24 @@
     }
 .video-container iframe{ width:640px; height:500px;}
 {#.video-container iframe {width:600px;}#}
-    @media (max-width: 1100px) {
-       .video-container iframe { width:320px; height:250px;}
+   @media (max-width: 1100px) {
+        .video-container iframe {
+            width: 400px; /* 비디오의 너비를 100%로 설정하여 반응형으로 만듭니다. */
+            height: 330px; /* 높이를 자동으로 조정하여 비율을 유지합니다. */
+        }
+        #vup {
+            height: 60px;
+            margin-bottom: -60px;
+        }
+         #vin{
+        width: 780px; height: 300px; margin-bottom: -300px; z-index: 3;
+    }
+          #vdown {
+        height: 60px;
+        margin-top: -60px;
+    }
+
+
 
      {#.yvideo{#}
      {#   width: 320px;#}
@@ -297,7 +313,7 @@
         {# video /#}
         <div id="vup"></div>
         <div id="vin"></div>
-        <div class="video-container" style="z-index: 4;margin-bottom: 0px;">
+        <div class="video-container" style="z-index: 4;">
                 <iframe id="yvideo" width="640" height="500" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;autoplay=1&mute=1&loop=1&&playlist=mPeRIUdnByg&controls=0&fs=0&loop=0&modestbranding=1&rel=0&end=73&
                     " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; mute=0; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
