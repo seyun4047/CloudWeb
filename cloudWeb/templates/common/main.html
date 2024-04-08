@@ -83,7 +83,7 @@
         z-index: 1;
         background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.99), rgba(0,0,0,0.98),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1),rgba(0,0,0,1)); /* 그라디언트를 이용하여 위에서 아래로 투명한 배경을 만듭니다. */
     }
-    #sec-txt{
+    .sec-txt{
         margin-top: 5vh;
         font-style: italic;
         {#background-color: black;#}
@@ -144,6 +144,9 @@
     }
     .imgstack-btn {
         background-image: url('/static/lab/stackbtn.jpg');
+    }
+    .ncuts-btn {
+        background-image: url('/static/lab/framethememory.png');
     }
     .smBtn {
         margin-top: 5vw;
@@ -245,7 +248,23 @@
         <a class="btn btn-outline-light scBtn" href="{% url 'gallery' %}">GALLERY</a>
     </div>
     <div class="section1">
-        <div id="sec-txt">Try a variety of photo conversion modules!</div>
+{#        <div id="sec-txt">Hello, This is our Story.</div>#}
+         <div class="sec-txt">Hello, This is our Story.</div>
+        <p class="sec1-inttxt-plus">Frame The Memory</p>
+{#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}
+        {# video /#}
+        <div style="width: 640px; height: 65px; background-color: black; margin-bottom: -65px; z-index: 5;"></div>
+        <div style="width: 780px; height: 500px; background-color: black; margin-bottom: -500px; z-index: 3;"></div>
+        <div class="video-container" style="z-index: 4;margin-bottom: 0px;">
+                <iframe width="640" height="500" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;autoplay=1&mute=1&loop=1&&playlist=mPeRIUdnByg&controls=0&fs=0&loop=0&modestbranding=1&rel=0&end=73&
+                    " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+<div style="width: 780px; height: 65px; background-color: black; margin-top: -65px; z-index: 5;"></div>
+        <a class="sec1-inttxt" style="margin-top: -2px;" href="{% url 'lab:ncutsgen' %}">"Enjoy"</a>
+{# video /#}
+        {#        <a class="sec1-btn ncuts-btn" href="{% url 'lab:ncutsgen' %}"><p class="sec1-inttxt-plus">Let's Enjoy</p></a>#}
+        <hr>
+        <div class="sec-txt">Try a variety of photo conversion modules!</div>
          <div class="sec1-inttxt">Combine Multiple Images<br>To ReCreate Better Photos!!</div>
         <p class="sec1-inttxt-plus">You Can Get Better Quality Photos, Or Get Mysterious Photos!</p>
 {#        <a class="sec1-btn songqrgen-btn" href="{% url 'lab:songqrgen' %}">Song QR generator by AI</a>#}

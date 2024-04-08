@@ -29,7 +29,13 @@
         </div>
     </div>
 </div>
-     <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-{% endblock %}
+{# video /#}
+        <div style="width: 640px; height: 65px; background-color: black; margin-bottom: -65px; z-index: 5;"></div>
+        <div style="width: 780px; height: 500px; background-color: black; margin-bottom: -500px; z-index: 3;"></div>
+        <div class="video-container" style="z-index: 4;margin-bottom: 0px;">
+                <iframe width="640" height="500" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;autoplay=1&mute=0&loop=1&&playlist=mPeRIUdnByg&controls=0&fs=0&loop=0&modestbranding=1&rel=0&end=73&
+                    " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+<div style="width: 780px; height: 65px; background-color: black; margin-top: -65px; z-index: 5;"></div>
+{# video /#}
+{# video /#}{% endblock %}
