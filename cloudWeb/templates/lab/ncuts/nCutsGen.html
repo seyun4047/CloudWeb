@@ -1,41 +1,83 @@
-{% extends 'common/base.html' %}
-<title>{% block head_title%}MUTZIN LAB-FRAME THE MEMORY{% endblock %}</title>
 <style>
-  .video-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+    #vup {
+        width: 640px;
+        height: 65px;
+        background-color: black;
+        margin-bottom: -65px;
+        z-index: 5;
+    }
+
+    {##vin {#}
+    {#    width: 780px;#}
+    {#    height: 500px;#}
+    {#    background-color: white;#}
+    {#    margin-bottom: -500px;#}
+    {#    z-index: 3;#}
+    {#}#}
+
+    #vdown {
+        width: 640px;
+        height: 65px;
+        background-color: black;
+        margin-top: -65px;
+        z-index: 5;
+    }
+
+
+    .video-container iframe {
+        width: 640px;
+        height: 500px;
+    }
+
+    @media (max-width: 1100px) {
+        .video-container iframe {
+            width: 400px; /* 비디오의 너비를 100%로 설정하여 반응형으로 만듭니다. */
+            height: 330px; /* 높이를 자동으로 조정하여 비율을 유지합니다. */
+        }
+        #vup {
+            height: 60px;
+            margin-bottom: -60px;
+        }
+          #vdown {
+        height: 60px;
+        margin-top: -60px;
+    }
+    }
 </style>
+{% extends 'common/base.html' %}
+
+{% block head_title %}
+    MUTZIN LAB-FRAME THE MEMORY
+{% endblock %}
+
+
+
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-10 col-lg-8">
-            <div class="card border-white">
+            <div class="card border-black">
                 <div class="card-header bg-black text-white text-center">
-                    <h1>Frame The Memory</h1>
+                    <h1 style="font-style: italic">Frame The Memory</h1>
                 </div>
-                <div class="card-body">
-                    <p class="text-center" style="font-weight: bolder; font-size: larger">"진짜 이순간을 기록한다"<br>Frame The Memory</p>
-                <hr><hr>
+                <div class="card-body bg-black text-white">
+                    <p class="text-center" style="font-weight: bolder; font-size: larger">"진짜 이순간을 기록한다"
+                    <hr><hr>
                     <p class="text-center" style="font-weight: bolder">제작은 1~2분 정도 소요됩니다.<br>이미지는 ".jpg", ".jpeg", or ".JPG" 만 지원합니다.<br>제공해주신 이미지 갯수대로 프레임은 정해지며, 1, 2, 4컷 중 제공됩니다.</p>
                     <div class="text-center">
                         {% include 'lab/ncuts/form.html' %}
                     </div>
+                    <hr>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-{# video /#}
-        <div style="width: 640px; height: 65px; background-color: black; margin-bottom: -65px; z-index: 5;"></div>
-        <div style="width: 780px; height: 500px; background-color: black; margin-bottom: -500px; z-index: 3;"></div>
-        <div class="video-container" style="z-index: 4;margin-bottom: 0px;">
-                <iframe width="640" height="500" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;autoplay=1&mute=0&loop=1&&playlist=mPeRIUdnByg&controls=0&fs=0&loop=0&modestbranding=1&rel=0&end=73&
-                    " title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-<div style="width: 780px; height: 65px; background-color: black; margin-top: -65px; z-index: 5;"></div>
-{# video /#}
-{# video /#}{% endblock %}
+
+                    <div id="vup"></div>
+                    <div id="vin"></div>
+    <div class="video-container" style="z-index: 4;margin-bottom: 0px;">
+        <iframe id="yvideo" width="640" height="500" src="https://www.youtube.com/embed/mPeRIUdnByg?si=XV6716nf7qL9T6Sv&amp;autoplay=1&mute=0&loop=1&&playlist=mPeRIUdnByg&controls=0&fs=0&loop=0&modestbranding=1&rel=0&end=73&" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; mute=0; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div id="vdown"></div>
+{% endblock %}
