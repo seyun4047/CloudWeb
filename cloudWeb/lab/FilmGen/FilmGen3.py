@@ -34,7 +34,7 @@ def gen(imgSrc, isNC=0, NCW=0, NCH=0):
     crV = [-5,5]
     cbV = [-5,5]
     coV = [7,10]
-    grV = [0.2,0.8]
+    grV = [0.12,0.8]
     ranges = f"Brightness: {exV[0]} to {exV[1]}, Cr: {crV[0]} to {crV[1]}, Cb: {cbV[0]} to {cbV[1]}, Contrast: {coV[0]} to {coV[1]}, Grain: {grV[0]} to {grV[1]}"
     cbcrbaseInfo = "Yellowish:add Cr subtract Cb. Orange:add Cr significantly, subtract Cb. Greenish:subtract Cr, add Cb. Bluish: Decrease Cr, subtract Cb significantly. do not make it Redish. Make it yellow, orange, blue, or green."
     baseInfo = f"set Brightness, Cr, Cb based on {cbcrbaseInfo}, contrast, grain. Do not exceed the specified number range."
